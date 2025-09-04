@@ -1,0 +1,17 @@
+<section class="py-12 lg:px-20 container mt-14">
+  <header class="mb-7  section-header ">
+    <p>Related Items</p>
+  </header>
+  <swiper-container autoplay-delay="500" speed="5000" loop="true" pagination="true" navigation="false"
+    space-between="20" breakpoints='{
+    "320": { "slidesPerView": 1, "spaceBetween": 10 },
+    "640": { "slidesPerView": 2, "spaceBetween": 15 },
+    "1024": { "slidesPerView": 4, "spaceBetween": 20 }
+  }'>
+    @for (product of productsList; track $index) {
+    <swiper-slide>
+      <app-product-card [item]="product" />
+    </swiper-slide>
+    }
+  </swiper-container>
+</section>

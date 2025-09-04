@@ -1,0 +1,14 @@
+<div class="flex space-x-1">
+  @for (star of [].constructor(maxRating); track $index) {
+  <ng-container>
+    <i class="fa-star cursor-pointer"
+    [ngClass]="[
+          getStarClass($index),
+          readonlyCase ? 'cursor-not-allowed pointer-events-none' : 'cursor-pointer'
+        ]"
+  (click)="!readonlyCase && setRating($index + 1)">
+    </i>
+  </ng-container>
+  }
+
+</div>

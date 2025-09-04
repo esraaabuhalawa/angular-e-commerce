@@ -1,0 +1,39 @@
+<div
+  class="w-full max-w-sm bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+  <!-- Image Section -->
+  <div class="rounded-t-xl bg-gray-50 flex items-center justify-center">
+    <!-- Product Image -->
+    <a [routerLink]="'/products/' + item.slug + '/' + item._id" class="block w-full">
+      <img class="w-[240px] h-[240px] object-contain mx-auto p-4 transition-transform duration-300 hover:scale-105"
+        [src]="item.imageCover" [alt]="item.title" />
+    </a>
+  </div>
+
+  <!-- Info Section -->
+  <div class="px-5 pb-5 mt-3">
+    <a [routerLink]="'/products/' + item.slug + '/' + item._id">
+      <h5
+        class="text-sm md:text-base font-semibold tracking-tight text-gray-900 hover:text-secondary line-clamp-1 transition-colors">
+        {{ item.title }}
+      </h5>
+    </a>
+
+    <p class="text-lg font-bold text-secondary mt-2">
+      {{ item.price }} <span class="text-sm font-medium">L.E</span>
+    </p>
+
+    <!-- Ratings -->
+    <div class="flex items-center mt-2">
+      <app-star-rating [rating]="item.ratingsAverage" [maxRating]="5" [readonlyCase]="true"></app-star-rating>
+      <span class="text-gray-500 text-sm font-medium ms-2">
+        ({{ item.ratingsAverage }})
+      </span>
+    </div>
+
+    <!-- Add to Cart Button -->
+    <button (click)="addToCart()"
+      class="mt-4 w-full hover:cursor-pointer bg-black text-white text-sm py-2.5 rounded-lg hover:bg-secondary transition-colors duration-300 flex items-center justify-center">
+      <i class="fa-solid fa-cart-shopping mr-2"></i> Add to Cart
+    </button>
+  </div>
+</div>

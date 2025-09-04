@@ -1,0 +1,40 @@
+<section class="py-12 container lg:px-20">
+  <header class=" mb-7  section-header ">
+  <p>Categories</p>
+  <h2>Browse By Category</h2>
+</header>
+<swiper-container autoplay-delay="2000" speed="5000" loop="true" pagination="true" navigation="true" space-between="20"
+  breakpoints='{
+    "320": { "slidesPerView": 1, "spaceBetween": 10 },
+    "640": { "slidesPerView": 2, "spaceBetween": 15 },
+    "1024": { "slidesPerView": 6, "spaceBetween": 10 }
+  }'>
+ @for (slide of categoriesList; track $index) {
+  <swiper-slide>
+    <div class="category-card">
+      <div class="image-wrapper">
+        <img [src]="slide.image" [alt]="slide.name" [title]="slide.name">
+      </div>
+      <div class="category-name">
+        {{ slide.name }}
+      </div>
+    </div>
+  </swiper-slide>
+}
+
+</swiper-container>
+</section>
+
+
+
+
+
+<!-- <owl-carousel-o [options]="customOptions">
+
+    @for (slide of categoriesList; track $index) {
+      <ng-template carouselSlide [id]="slide._id">
+  <img style="width:200px;height:auto" [src]="slide.image" [alt]="slide.name" [title]="slide.name">
+</ng-template>
+    }
+
+  </owl-carousel-o> -->

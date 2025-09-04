@@ -1,0 +1,46 @@
+// swiper-container{
+//   padding-bottom: 190px !important;
+// }
+swiper-container::part(container) {
+  padding-bottom: 60px !important;
+}
+.swiper-wrapper{
+    padding-bottom: 80px !important;
+}
+swiper-container::part(button-prev),
+swiper-container::part(button-next) {
+  top: 98% !important;
+  width: 20px;
+  height: 20px;
+  z-index:50 !important;
+  color: red !important; /* just to test */
+}
+
+swiper-container::part(pagination) {
+  bottom: 20px !important;
+  text-align: center;
+  top: 93% !important;
+}
+
+// :ng-deep(.swiper-button-prev), .swiper-rtl .swiper-button-next{
+//   left: 40% !important
+// }
+// .swiper-button-next, .swiper-rtl .swiper-button-prev{
+//   right: 40% !important
+// }
+// swiper-container::part(button-prev),
+// swiper-container::part(button-next) {
+//   top: auto !important;
+//   bottom: 10px !important;
+//   transform: translateY(0);
+//   color: red !important;
+//   z-index:30 !important
+// }
+
+swiper-container::part(button-prev) {
+  left: 40% !important;
+}
+
+swiper-container::part(button-next) {
+  right: 40% !important;
+}

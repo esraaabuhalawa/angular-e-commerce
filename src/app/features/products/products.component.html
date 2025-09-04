@@ -1,0 +1,126 @@
+<div class="min-h-screen bg-white">
+  <!-- Search -->
+  <!-- <div class="max-w-7xl mx-auto p-4">
+    <div class="flex items-center border-b border-gray-300">
+      <input type="text" placeholder="Pants" class="flex-1 py-2 px-2 outline-none text-gray-700 placeholder-gray-400" />
+      <button class="text-gray-500">✕</button>
+    </div>
+  </div> -->
+
+  <!-- Main layout -->
+  <div class="px-10 mx-auto p-4 grid grid-cols-12  gap-6">
+    <!-- Sidebar Filters -->
+    <aside class="lg:col-span-3 space-y-6">
+        <label class="flex flex-col min-w-40 h-12 w-full">
+        <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+          <div
+            class="text-[#4c9a73] flex border-none bg-black items-center justify-center pl-4 rounded-l-lg border-r-0"
+            data-icon="MagnifyingGlass" data-size="24px" data-weight="regular">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+              viewBox="0 0 256 256">
+              <path
+                d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z">
+              </path>
+            </svg>
+          </div>
+          <input placeholder="Search for products"
+            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d1b14] focus:outline-0 focus:ring-0 border-none bg-black focus:border-none h-full placeholder:text-[#4c9a73] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+            value="" />
+        </div>
+      </label>
+    <!-- Applied Filters -->
+    <div class="space-y-2">
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-primary text-white px-3 py-1 rounded-full flex items-center space-x-1">
+            <span>S / US (4-6)</span>
+            <button class="text-xs">✕</button>
+          </span>
+          <span class="bg-primary text-white px-3 py-1 rounded-full flex items-center space-x-1">
+            <span>In Stock</span>
+            <button class="text-xs">✕</button>
+          </span>
+        </div>
+        <div class="flex justify-between">
+          <button class="text-gray-600 text-sm">Clear All Filters</button>
+          <button class="bg-primary text-white px-3 py-1 text-sm rounded">
+            Applied Filters
+          </button>
+        </div>
+      </div>
+
+    <!-- Sort By -->
+    <div>
+        <button class="w-full flex justify-between items-center font-semibold text-gray-700">
+          Sort By <span>+</span>
+        </button>
+      </div>
+
+    <!-- Size -->
+    <div>
+        <div class="flex justify-between items-center font-semibold text-gray-700 mb-2">
+          Size <span>−</span>
+        </div>
+        <div class="space-y-2 text-sm text-gray-600">
+          <label class="flex items-center space-x-2">
+            <input type="checkbox" /> <span>XS / US (0-4)</span>
+          </label>
+          <label class="flex items-center space-x-2">
+            <input type="checkbox" checked /> <span>S / US (4-6)</span>
+          </label>
+          <label class="flex items-center space-x-2">
+            <input type="checkbox" /> <span>M / US (6-10)</span>
+          </label>
+          <label class="flex items-center space-x-2">
+            <input type="checkbox" /> <span>L / US (10-14)</span>
+          </label>
+          <label class="flex items-center space-x-2">
+            <input type="checkbox" /> <span>XL / US (12-16)</span>
+          </label>
+        </div>
+      </div>
+
+    <!-- Color -->
+    <div>
+        <button class="w-full flex justify-between items-center font-semibold text-gray-700">
+          Color <span>+</span>
+        </button>
+      </div>
+
+    <!-- Collection -->
+    <div>
+        <div class="flex justify-between items-center font-semibold text-gray-700 mb-2">
+          Collection <span>−</span>
+        </div>
+        <div class="space-y-2 text-sm text-gray-600">
+          <label class="flex items-center space-x-2">
+            <input type="checkbox" checked /> <span>In Stock</span>
+          </label>
+          <label class="flex items-center space-x-2">
+            <input type="checkbox" /> <span>Out Of Stock</span>
+          </label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Products -->
+    <div class="py-3 lg:col-span-9 gap-6">
+
+
+       <main>
+      <!--class="lg:col-span-3"-->
+      <!-- Items count -->
+      @if (isLoading) {
+        <app-loader></app-loader>
+      } @else {
+      <!-- Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-4">
+        @for (product of productsList; track $index) {
+        <app-product-card [item]="product" />
+        }
+      </div>
+      }
+    </main>
+    </div>
+
+  </div>
+</div>

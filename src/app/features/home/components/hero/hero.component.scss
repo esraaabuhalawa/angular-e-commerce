@@ -1,0 +1,19 @@
+swiper-container::part(button-prev),
+swiper-container::part(button-next) {
+  width: 25px;
+  height: 25px;
+  color: #fff !important; /* just to test */
+}
+
+swiper-container::part(bullet) {
+  width: 15px;
+  height: 15px;
+  background-color: rgb(181, 178, 178) !important;
+  opacity: .8
+}
+
+swiper-container::part(bullet-active) {
+ width: 15px;
+  height: 15px;
+  border: 2px solid #fff
+}

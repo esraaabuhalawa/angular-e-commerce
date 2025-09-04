@@ -1,0 +1,101 @@
+// swiper-container{
+//   padding-bottom: 190px !important;
+// }
+swiper-container::part(container) {
+  padding-bottom: 60px !important;
+}
+
+.swiper-wrapper {
+  padding-bottom: 80px !important;
+}
+
+swiper-container::part(button-prev),
+swiper-container::part(button-next) {
+  top: 98% !important;
+  width: 20px;
+  height: 20px;
+  // width: 40px;
+  // height: 40px;
+  z-index: 50 !important;
+  color: red !important;
+  // background: gray;
+  //border-radius: 50%;
+}
+
+swiper-container::part(button-prev) svg,
+swiper-container::part(button-next) svg {
+  width: 20px;
+  height: 20px;
+}
+
+// swiper-container::part(button-prev) {
+//   mask: url('left-arrow.svg') no-repeat center;
+//   -webkit-mask: url('left-arrow.svg') no-repeat center;
+//   mask-size: 20px 20px;
+//   -webkit-mask-size: 20px 20px;
+// }
+
+// swiper-container::part(button-next) {
+//   mask: url('right-arrow.svg') no-repeat center;
+//   -webkit-mask: url('right-arrow.svg') no-repeat center;
+//   mask-size: 20px 20px;
+//   -webkit-mask-size: 20px 20px;
+// }
+swiper-container::part(pagination) {
+  bottom: 20px !important;
+  text-align: center;
+  top: 90% !important;
+}
+
+
+swiper-container::part(button-prev) {
+  left: 40% !important;
+}
+
+swiper-container::part(button-next) {
+  right: 40% !important;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 240px;
+  /* fixed height for all images */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* ensures images take same space */
+}
+
+.category-name {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  color: #333;
+}
