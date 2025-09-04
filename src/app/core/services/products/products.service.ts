@@ -8,14 +8,10 @@ import { environment } from '../../../../environments/environment.development';
   providedIn: 'root'
 })
 export class ProductsService {
-    private readonly httpClient = inject(HttpClient)
-    //Get all producs
-
-    // getAllProducts(): Observable<any>{
-    //   return this.httpClient.get(environment.baseUrl + 'products')
-    // }
-     getAllProducts(filters?: any): Observable<any> {
-    let params = new HttpParams();
+  private readonly httpClient = inject(HttpClient)
+  //Get all producs
+  getAllProducts(filters?: any ,page: number = 1): Observable<any> {
+    let params = new HttpParams().set('page', page);
 
     if (filters) {
       Object.keys(filters).forEach(key => {

@@ -11,6 +11,16 @@
 
   <!-- Info Section -->
   <div class="px-5 pb-5 mt-3">
+    <!-- Brand & Category -->
+    <div class="flex flex-wrap items-center justify-between mb-3 gap-2 mt-1 text-xs text-gray-600">
+      <span class=" py-0.5 bg-gray-100 rounded-md">
+        Brand: <span class="font-medium text-gray-800">{{ item.brand.name }}</span>
+      </span>
+      <span class=" py-0.5 bg-gray-100 rounded-md">
+        Category: <span class="font-medium text-gray-800">{{ item.category.name }}</span>
+      </span>
+    </div>
+
     <a [routerLink]="'/products/' + item.slug + '/' + item._id">
       <h5
         class="text-sm md:text-base font-semibold tracking-tight text-gray-900 hover:text-secondary line-clamp-1 transition-colors">
@@ -18,6 +28,9 @@
       </h5>
     </a>
 
+
+
+    <!-- Price -->
     <p class="text-lg font-bold text-secondary mt-2">
       {{ item.price }} <span class="text-sm font-medium">L.E</span>
     </p>

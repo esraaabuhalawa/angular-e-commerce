@@ -1,0 +1,19 @@
+#products {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: #db4444;
+  border-radius: 4px;
+  padding: 0.1875rem 0.625rem;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .pagination-next a:after,
+.my-pagination ::ng-deep .ngx-pagination .pagination-next.disabled:after {
+  // content: "›"; /* Unicode arrow */
+  // font-size: 2rem;
+  margin-right: 0;
+  margin-left: 0;
+}
