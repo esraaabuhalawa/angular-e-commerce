@@ -11,6 +11,7 @@ import { CategoriesService } from '../../core/services/categories/categories.ser
 import { BrandsService } from '../../core/services/brands/brands.service';
 import { Brand } from '../../core/models/brand.interface';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -31,21 +32,20 @@ export class ProductsComponent implements OnInit, OnDestroy {
   maxPrice: number = 0;
   minPrice: number = 0;
   sortProducts: string = '';
-  currentPage!:number;
-  pageSize!:number;
-  total!:number ;
+  currentPage!: number;
+  pageSize!: number;
+  total!: number;
 
   isLoading: boolean = false
-  // constructor(private productService: ProductsService) {
-  // }
 
   private readonly productService = inject(ProductsService);
   private readonly categoryService = inject(CategoriesService);
   private readonly brandsService = inject(BrandsService);
+  private readonly route = inject(ActivatedRoute);
 
-  fetchProducts(filters?: any , page: number = 1) {
+  fetchProducts(filters?: any, page: number = 1) {
     this.isLoading = true;
-    this.getProducts = this.productService.getAllProducts(filters,page).subscribe(
+    this.getProducts = this.productService.getAllProducts(filters, page).subscribe(
       {
         next: (res: any) => {
           //console.log(res.data);
@@ -65,11 +65,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
     )
   }
 
-pageChanged(page: number) {
-  console.log(page)
-  this.currentPage = page;
-  this.fetchProducts({}, page); // pass the new page number
-}
+  pageChanged(page: number) {
+    console.log(page)
+    this.currentPage = page;
+    this.fetchProducts({}, page); // pass the new page number
+  }
   fetchCategories() {
     this.categorySub = this.categoryService.getAllCategories().subscribe({
       next: (res) => {
@@ -133,7 +133,17 @@ pageChanged(page: number) {
   }
 
   ngOnInit(): void {
-    this.fetchProducts();
+    this.route.queryParams.subscribe(params => {
+    if (params['category']) {
+      this.selectedCategory = params['category'];
+
+      // Use the same filtering logic
+      this.applyFilters();
+    } else {
+      // Default fetch if no query params
+      this.fetchProducts();
+    }
+  })
     this.fetchCategories();
     this.fetchBrands();
   }

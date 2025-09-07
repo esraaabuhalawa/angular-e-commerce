@@ -35,8 +35,9 @@ export const routes: Routes = [
       { path: 'products/:slug/:id', component: ProductDetailsComponent },
       { path: 'categories', component: CategoriesComponent },
       { path: 'cart', component: CartComponent },
-      { path: 'checkout', component: CheckoutComponent }
+      { path: 'checkout', component: CheckoutComponent },
+      { path: '**', component: NotFoundComponent }
     ]
   },
-  { path: '**', component: NotFoundComponent }
+  //{ path: '**', component: NotFoundComponent }
 ];

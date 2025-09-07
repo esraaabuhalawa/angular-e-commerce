@@ -1,9 +1,27 @@
-<section class="py-12 lg:px-20 container ">
+<section class="py-12">
   <header class="mb-7  section-header ">
     <p>Our Products</p>
     <h2>Explore Our Products</h2>
   </header>
-  <swiper-container autoplay-delay="500" speed="5000" loop="true" pagination="true" navigation="true" space-between="20"
+
+  <owl-carousel-o [options]="customOptions">
+    @for (product of productsList; track product.id) {
+    <ng-template carouselSlide [id]="product.id">
+      <app-product-card [item]="product" />
+    </ng-template>
+    }
+  </owl-carousel-o>
+
+  <div class="mt-12 flex justify-center items-center">
+    <a routerLink="/products" class="py-3 px-12 bg-secondary text-center text-base text-white hover:cursor-pointer
+   transition duration-300 hover:bg-transparent border-2 rounded-[4px] border-red-600 hover:text-secondary">
+      View All Products
+    </a>
+  </div>
+</section>
+
+
+<!-- <swiper-container autoplay-delay="500" speed="5000" loop="true" pagination="true" navigation="true" space-between="20"
     breakpoints='{
     "320": { "slidesPerView": 1, "spaceBetween": 10 },
     "640": { "slidesPerView": 2, "spaceBetween": 15 },
@@ -14,5 +32,4 @@
       <app-product-card [item]="product" />
     </swiper-slide>
     }
-  </swiper-container>
-</section>
+  </swiper-container> -->

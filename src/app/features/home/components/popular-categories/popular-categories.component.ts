@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CategoriesService } from '../../../../core/services/categories/categories.service';
 import { Subscription } from 'rxjs';
 import { Category } from '../../../../core/models/category.interface';
@@ -8,13 +8,13 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-popular-categories',
-  imports: [ CarouselModule ],
+  imports: [CarouselModule],
   templateUrl: './popular-categories.component.html',
   styleUrl: './popular-categories.component.scss',
-   schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  //  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class PopularCategoriesComponent implements OnInit , OnDestroy {
-  categoriesList:Category[] = [];
+export class PopularCategoriesComponent implements OnInit, OnDestroy {
+  categoriesList: Category[] = [];
   categoriesSubscribe: Subscription | null = null;
 
   private readonly categoriesService = inject(CategoriesService);
@@ -36,37 +36,45 @@ export class PopularCategoriesComponent implements OnInit , OnDestroy {
     this.getCategories();
   }
   ngOnDestroy(): void {
-    if(this.categoriesSubscribe){
-       this.categoriesSubscribe.unsubscribe();
+    if (this.categoriesSubscribe) {
+      this.categoriesSubscribe.unsubscribe();
     }
   }
- customOptions: OwlOptions = {
-    loop: true,              // infinite looping
-  autoplay: true,          // 👈 enable auto play
-  autoplayTimeout:3000,   // 👈 3s per slide (default: 5000)
+
+customOptions: OwlOptions = {
+  loop: true,                     // infinite looping
+  autoplay: true,                 // enable auto play
+  autoplayTimeout: 4000,          // 3s per slide
   autoplayHoverPause: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 2
-      },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 4
-      }
+  smartSpeed: 800,                 // 👈 smooth transition speed
+  animateOut: 'fadeOut',           // 👈 optional smooth fade
+  mouseDrag: true,
+  touchDrag: true,
+  pullDrag: true,
+  dots: false,
+  margin: 20,                      // 👈 margin between items
+  navSpeed: 700,
+  navText: ['<i class="fa-solid fa-arrow-left"></i>', '<i class="fa-solid fa-arrow-right"></i>'],             // 👈 custom arrows
+  responsive: {
+    0: {
+      items: 1
     },
-    nav: true
-  }
+    400: {
+      items: 2
+    },
+    740: {
+      items: 3
+    },
+    940: {
+      items: 4
+    },
+    1400: {
+      items: 5
+    }
+  },
+  nav: true
+}
+
 }
 
 

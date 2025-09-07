@@ -1,19 +1,36 @@
-swiper-container::part(button-prev),
-swiper-container::part(button-next) {
-  width: 25px;
-  height: 25px;
-  color: #fff !important; /* just to test */
+:host ::ng-deep .owl-theme .owl-nav.disabled + .owl-dots{
+  transform: translateY(-40px);
+}
+:host ::ng-deep .owl-theme .owl-dots .owl-dot.active span,
+:host ::ng-deep.owl-theme .owl-dots .owl-dot:hover span{
+  background-color: red;
 }
 
-swiper-container::part(bullet) {
-  width: 15px;
-  height: 15px;
-  background-color: rgb(181, 178, 178) !important;
-  opacity: .8
+:host ::ng-deep .owl-theme .owl-dots .owl-dot:hover span{
+  background-color: #DB4444;
+  border:2px solid #fff
 }
+:host ::ng-deep .owl-theme .owl-dots .owl-dot span{
+    background-color: #333;
+    width: 15px;
+    height: 15px;
+}
+// swiper-container::part(button-prev),
+// swiper-container::part(button-next) {
+//   width: 25px;
+//   height: 25px;
+//   color: #fff !important; /* just to test */
+// }
 
-swiper-container::part(bullet-active) {
- width: 15px;
-  height: 15px;
-  border: 2px solid #fff
-}
+// swiper-container::part(bullet) {
+//   width: 15px;
+//   height: 15px;
+//   background-color: rgb(181, 178, 178) !important;
+//   opacity: .8
+// }
+
+// swiper-container::part(bullet-active) {
+//  width: 15px;
+//   height: 15px;
+//   border: 2px solid #fff
+// }

@@ -1,16 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-// @use '../node_modules/ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
-// @use '../node_modules/ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+@use 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel' as owl;
+@use 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default' as owldefault;
 @use "tailwindcss";
 @use "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
 
-// @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
-// @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
-// @import "swiper/css";
-// @import "swiper/css/navigation";
-// @import "swiper/css/pagination";
 
 :root {
   --color-primary: #5A6D57;
