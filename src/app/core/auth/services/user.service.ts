@@ -1,6 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Inject, inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -15,6 +16,8 @@ export interface User {
 })
 export class UserService {
   private userSubject = new BehaviorSubject<User | null>(null);
+  private cookieService = inject(CookieService);
+  
   user$: Observable<User | null> = this.userSubject.asObservable();
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
   // set user after login
@@ -31,12 +34,14 @@ export class UserService {
   get currentUser(): User | null {
     return this.userSubject.value;
   }
+
   private readonly http = inject(HttpClient)
   /** Fetch user using backend verify token endpoint */
   loadUserFromToken() {
     let token;
     if (isPlatformBrowser(this.platformId)) {
-      token = localStorage.getItem('authToken');
+      token = this.cookieService.get('authToken')
+      //token = localStorage.getItem('authToken');
     }
     if (token) {
       this.http.get<any>('https://ecommerce.routemisr.com/api/v1/auth/verifyToken').subscribe({

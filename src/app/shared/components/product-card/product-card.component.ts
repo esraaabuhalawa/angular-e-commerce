@@ -4,10 +4,11 @@ import { Product } from '../../../core/models/product.interface';
 import { StarRatingComponent } from "../star-rating/star-rating.component";
 import { WishlistService } from '../../../features/wishlist/services/wishlist.service';
 import { ToastrService } from 'ngx-toastr';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-card',
-  imports: [RouterLink, StarRatingComponent],
+  imports: [RouterLink, StarRatingComponent,CurrencyPipe],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss'
 })

@@ -6,6 +6,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Subscription } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
   private readonly router = inject(Router)
   private readonly userService = inject(UserService);
   private readonly fb = inject(FormBuilder);
+  private readonly cookieService = inject(CookieService);
 
   showPassword: boolean = false;
   togglePassword() {
@@ -58,8 +60,11 @@ export class LoginComponent implements OnInit {
             this.userService.setUser(res.user);
             // ✅ Only set localStorage if in browser
             if (isPlatformBrowser(this.platformId)) {
-              localStorage.setItem('authToken', this.token);
-              localStorage.setItem('userData', JSON.stringify(this.userData));
+              this.cookieService.set('authToken', res.token);
+              this.authService.decodeToken();
+              //localStorage.setItem('authToken', this.token);
+
+              //localStorage.setItem('userData', JSON.stringify(this.userData));
             }
             this.router.navigate(['/home'])
             this.isLoading = false

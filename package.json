@@ -34,6 +34,7 @@
     "@tailwindcss/postcss": "^4.1.12",
     "express": "^5.1.0",
     "flowbite": "^3.1.2",
+    "jwt-decode": "^4.0.0",
     "ngx-cookie-service": "^20.1.0",
     "ngx-owl-carousel-o": "^20.0.1",
     "ngx-pagination": "^6.0.3",

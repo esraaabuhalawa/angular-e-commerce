@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { isPlatformBrowser } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -25,6 +26,7 @@ export class RegisterComponent implements OnInit {
   private readonly router = inject(Router)
   private readonly fb = inject(FormBuilder);
   private readonly userService = inject(UserService)
+private readonly cookieService = inject(CookieService);
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object
@@ -75,8 +77,9 @@ export class RegisterComponent implements OnInit {
             this.userData = res.user;
             // ✅ Only set localStorage if in browser
             if (isPlatformBrowser(this.platformId)) {
-              localStorage.setItem('authToken', this.token);
-              localStorage.setItem('userData', JSON.stringify(this.userData));
+              this.cookieService.set('authToken', res.token)
+              // localStorage.setItem('authToken', this.token);
+              // localStorage.setItem('userData', JSON.stringify(this.userData));
             }
             this.router.navigate(['/home'])
             this.errorMsg = '';
