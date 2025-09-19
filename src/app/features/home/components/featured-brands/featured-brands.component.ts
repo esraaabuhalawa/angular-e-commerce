@@ -20,7 +20,7 @@ export class FeaturedBrandsComponent implements OnInit, OnDestroy {
   fetchCategories() {
     this.categorySub = this.categoryService.getAllCategories().subscribe({
       next: (res) => {
-        this.allCategories = res.data;
+        this.allCategories = res.data || [];
         //console.log(this.allCategories)
       },
       error: (err) => {

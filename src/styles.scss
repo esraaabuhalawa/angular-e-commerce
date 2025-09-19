@@ -2,6 +2,8 @@
 
 @use 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel' as owl;
 @use 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default' as owldefault;
+// regular style toast
+@use 'ngx-toastr/toastr';
 @use "tailwindcss";
 @use "flowbite/src/themes/default";
 @plugin "flowbite/plugin";

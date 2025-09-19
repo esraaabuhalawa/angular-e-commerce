@@ -1,16 +1,17 @@
 <!-- navbar.component.html -->
 <!-- Top black bar -->
-<div class="bg-black text-white text-xs py-2 px-4 flex justify-between items-center px-10">
-  <div>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! <a href="#" class="underline">ShopNow</a>
+<div class="bg-black text-white text-xs py-2 px-4 flex justify-center items-center py-4 px-10">
+  <div>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! <a routerLink="/products"
+      class="underline">ShopNow</a>
   </div>
   <!--language button-->
-  <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+  <!-- <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
     class="text-white hover:cursor-pointer hover:text-red-600 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
     type="button"><i class="fa-solid fa-globe"></i>
-  </button>
+  </button> -->
 
   <!-- Language Dropdown menu -->
-  <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
+  <!-- <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
       <li>
         <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">English</a>
@@ -19,7 +20,7 @@
         <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Arabic</a>
       </li>
     </ul>
-  </div>
+  </div> -->
 </div>
 
 <nav class="px-10 py-4 bg-white shadow-md">
@@ -51,82 +52,112 @@
         <li><a routerLink="/products" routerLinkActive="font-semibold text-red-500"
             [routerLinkActiveOptions]="{ exact: true }" class="hover:text-red-500 transition duration-300 ">Products</a>
         </li>
-        <li><a routerLink="/products" routerLinkActive="font-semibold text-red-500"
+        <li><a routerLink="/brands" routerLinkActive="font-semibold text-red-500"
             [routerLinkActiveOptions]="{ exact: true }" class="hover:text-red-500 transition duration-300 ">Brands</a>
         </li>
-        <li><a routerLink="/auth/register" routerLinkActive="font-semibold text-red-500"
-            [routerLinkActiveOptions]="{ exact: true }" class="hover:text-red-500 transition duration-300 ">Sign UP</a>
+        <li *ngIf="!(userData$ | async)"><a routerLink="/auth/register" routerLinkActive="font-semibold text-red-500"
+            [routerLinkActiveOptions]="{ exact: true }" class="hover:text-red-500 transition duration-300">Sign UP</a>
         </li>
-        <!-- <li><a routerLink="/categories" routerLinkActive="font-semibold"  [routerLinkActiveOptions]="{ exact: true }" class="hover:text-red-500 transition duration-300 ">Contact</a></li> -->
       </ul>
 
+      <!----- User Profile Dropdown   ----->
       <div class="flex space-x-3 items-center">
         <div class="flex items-center space-x-2">
           <input type="text" placeholder="What are you looking for?" class="border rounded-md px-3 py-1 text-sm" />
           <i class="fa fa-search text-gray-600"></i>
         </div>
-        <ul class="flex space-x-3 font-medium">
-          <li [class.hidden]="authPages"><a href="#" class="hover:text-red-500"><i class="fa-regular fa-heart"></i></a>
+        <ul class="flex space-x-3 font-medium items-center">
+          <li [class.hidden]="authPages">
+            <a routerLink="/wishlist" class="hover:text-red-500"><i class="fa-regular fa-heart"></i></a>
           </li>
-          <li><a [class.hidden]="authPages" href="#" class="hover:text-red-500"><i
-                class="fa-solid fa-cart-shopping"></i></a>
-              </li>
+          <li>
+            <a [class.hidden]="authPages" routerLink="/cart" routerLinkActive="text-red-500"
+              class="hover:text-red-500"><i class="fa-solid fa-cart-shopping"></i></a>
+          </li>
 
-            <!-- Profile Button -->
-            <li id="profileDropdownButton" data-dropdown-toggle="profileDropdown">
-              <i class="fa-regular fa-user"></i>
-            </li>
+          <!-- Profile Button -->
+          <li *ngIf="userData$ | async as user" (click)="toggleDropdown()" class="relative cursor-pointer">
+            <i class="fa-regular fa-user hover:text-red-500"></i>
 
             <!-- Profile Dropdown menu -->
-            <div id="profileDropdown"
-              class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
-              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="profileDropdownButton">
-                <li>
-                  <a href="#"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+            <div *ngIf="showDropdown"
+              class="absolute right-0 mt-2 z-20 w-56 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+              <ul class="text-sm text-gray-700">
+                <!-- User info -->
+                <li class="flex items-center gap-3 px-4 py-3 bg-gray-50">
+                  <div class="bg-gray-700 rounded-full w-10 h-10 flex justify-center items-center text-white">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd"
+                        d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z"
+                        clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-gray-900 font-medium text-sm leading-tight">{{ user.name }}</span>
+                    <span class="text-gray-500 text-xs">( {{ user.role }} )</span>
+                  </div>
                 </li>
+
+                <!-- Divider -->
+                <li class="border-t border-gray-100"></li>
+
+                <!-- Logout -->
                 <li>
-                  <a href="#"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                </li>
-                <li>
-                  <a href="#"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
+                  <button (click)="logout()"
+                    class="w-full flex gap-2 text-left px-4 py-2.5 text-gray-700 hover:cursor-pointer hover:bg-red-50 hover:text-red-600 transition-colors">
+                    <svg class="w-6 h-6 " aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2" />
+                    </svg>
+                    <span>Logout</span>
+                  </button>
                 </li>
               </ul>
             </div>
+          </li>
         </ul>
       </div>
+
     </div>
   </div>
 </nav>
 
 <!-- Offcanvas Sidebar (mobile only) -->
-<div
-  class="fixed top-0 left-0 h-full w-64 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 lg:hidden z-[10000]"
+<div class="fixed top-0 left-0 h-full w-64  shadow-lg transform transition-transform duration-300 lg:hidden z-[10000] navbar-offcanvas"
   [class]="{ '-translate-x-full': !isOffcanvasOpen, 'translate-x-0': isOffcanvasOpen }">
 
   <!-- Close Button -->
-  <div class="flex justify-between items-center p-4 border-b">
-    <span class="font-bold text-lg">Menu</span>
-    <button (click)="toggleOffcanvas()" class="text-gray-600 dark:text-gray-300">
+  <div class="flex justify-between items-center p-4 border-b border-gray-300">
+    <span class="font-bold text-lg brand">Exclusive</span>
+    <button (click)="toggleOffcanvas()" class="text-gray-600">
       ✕
     </button>
   </div>
 
   <!-- Links -->
   <ul class="flex flex-col p-4 space-y-4 font-medium">
-    <li><a href="#" (click)="closeOffcanvas()" class="hover:text-blue-600">Home</a></li>
-    <li><a href="#" (click)="closeOffcanvas()" class="hover:text-blue-600">About</a></li>
-    <li><a href="#" (click)="closeOffcanvas()" class="hover:text-blue-600">Services</a></li>
-    <li><a href="#" (click)="closeOffcanvas()" class="hover:text-blue-600">Pricing</a></li>
-    <li><a href="#" (click)="closeOffcanvas()" class="hover:text-blue-600">Contact</a></li>
+    <li><a (click)="closeOffcanvas()" routerLink="/home" routerLinkActive="font-semibold text-red-500"
+        [routerLinkActiveOptions]="{ exact: true }" class="hover:text-red-500 transition duration-300 ">Home</a>
+    </li>
+    <li><a (click)="closeOffcanvas()" routerLink="/categories" routerLinkActive="font-semibold text-red-500"
+        [routerLinkActiveOptions]="{ exact: true }" class="hover:text-red-500 transition duration-300 ">Categories</a>
+    </li>
+    <li><a (click)="closeOffcanvas()" routerLink="/products" routerLinkActive="font-semibold text-red-500"
+        [routerLinkActiveOptions]="{ exact: true }" class="hover:text-red-500 transition duration-300 ">Products</a>
+    </li>
+    <li><a (click)="closeOffcanvas()" routerLink="/brands" routerLinkActive="font-semibold text-red-500"
+        [routerLinkActiveOptions]="{ exact: true }" class="hover:text-red-500 transition duration-300 ">Brands</a>
+    </li>
+    <li><a (click)="closeOffcanvas()" routerLink="/auth/register" routerLinkActive="font-semibold text-red-500"
+        [routerLinkActiveOptions]="{ exact: true }" class="hover:text-red-500 transition duration-300 ">Sign UP</a>
+    </li>
   </ul>
 </div>
 
 <!-- Overlay -->
 @if(isOffcanvasOpen){
-<div class="fixed inset-0 bg-black bg-opacity-50 lg:hidden transition-opacity duration-300 z-[1000]"
+<div class="fixed inset-0 offcanvas-overlay lg:hidden transition-opacity duration-300 z-[1000]"
   (click)="closeOffcanvas()">
 </div>
 }

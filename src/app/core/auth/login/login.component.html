@@ -1,13 +1,4 @@
-<div class="min-h-screen flex flex-col">
-  <!-- Main Content -->
-  <div class="flex flex-col lg:flex-row flex-1 pr-10 py-10">
-    <!-- Left Image -->
-    <div class="w-full pl-10 lg:pl-0 mb-7 lg:mb-0 lg:w-1/2 flex  justify-center">
-      <img src="/images/login-1.png" alt="Shopping Cart & Phone" class="object-cover w-full">
-    </div>
 
-    <!-- Right Signup Form -->
-    <div class="lg:w-1/2 flex flex-col justify-center px-16 mb-8 lg:mb-3">
       <h2 class="text-2xl font-semibold mb-2">Log in to Exclusive</h2>
       <p class="text-gray-900 mb-6">Enter your details below</p>
 
@@ -48,9 +39,9 @@
          peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
          peer-focus:font-medium peer-focus:scale-75 peer-focus:-translate-y-6
          peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto
-         peer-focus:!text-red-600">Password</label>
+         peer-focus:!text-red-600 ">Password</label>
           <button type="button" (click)="togglePassword()"
-            class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+            class="absolute inset-y-0  hover:cursor-pointer right-0 flex items-center px-3 text-gray-500">
             @if(!showPassword){
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
               stroke="currentColor">
@@ -115,7 +106,7 @@
           </button>
 
           <p class="w-1/2 text-end text-secondary">
-            <a routerLink="/regiser" class="font-medium hover:underline">Forgot password?</a>
+            <a routerLink="/auth/forget-password" class="font-medium hover:underline">Forgot password?</a>
           </p>
         </div>
 
@@ -126,6 +117,4 @@
         }
       </form>
 
-    </div>
-  </div>
-</div>
+

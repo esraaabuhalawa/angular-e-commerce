@@ -1,253 +1,235 @@
-<div class="min-h-screen flex flex-col">
-  <!-- Main Content -->
-  <div class="flex flex-col lg:flex-row flex-1 pr-10 py-10">
-    <!-- Left Image -->
-    <div class="w-full pl-10 lg:pl-0 mb-7 lg:mb-0 lg:w-1/2 flex  justify-center">
-      <img src="/images/login-1.png" alt="Shopping Cart & Phone" class="object-cover w-full">
-    </div>
+<!-- Right Signup Form -->
+<h2 class="text-2xl font-semibold mb-2">Create an account</h2>
+<p class="text-gray-600 mb-6">Enter your details below</p>
 
-    <!-- Right Signup Form -->
-    <div class="lg:w-1/2 flex flex-col justify-center px-16 mb-8 lg:mb-3">
-      <h2 class="text-2xl font-semibold mb-2">Create an account</h2>
-      <p class="text-gray-600 mb-6">Enter your details below</p>
-
-      <form [formGroup]="registerForm" (ngSubmit)="submitForm()" class="w-full mx-auto space-y-6">
-        <div class="relative z-0 w-full mb-5 group">
-          <input formControlName="name" type="text" id="floating_name" name="floating_name" class="form-input peer"
-            placeholder=" " />
-          <label for="floating_name" class="form-label -translate-y-6 scale-75
+<form [formGroup]="registerForm" (ngSubmit)="submitForm()" class="w-full mx-auto space-y-6">
+  <div class="relative z-0 w-full mb-5 group">
+    <input formControlName="name" type="text" id="floating_name" name="floating_name" class="form-input peer"
+      placeholder=" " />
+    <label for="floating_name" class="form-label -translate-y-6 scale-75
          peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
          peer-focus:font-medium peer-focus:scale-75 peer-focus:-translate-y-6
          peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto
          peer-focus:!text-red-600">
-            Name
-          </label>
-        </div>
-        @let nameControl = registerForm.get('name');
+      Name
+    </label>
+  </div>
+  @let nameControl = registerForm.get('name');
 
-        @if(nameControl?.errors && nameControl?.touched){
-        <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-          <span class="sr-only">Danger</span>
-          <div>
-            <ul class=" list-disc list-inside">
-              @if(nameControl?.getError('required')){
-              <li>This Field is required</li>
-              }
-              @else if(nameControl?.getError('maxlength')){
-              <li>Should be less than 20 characters</li>
-              }
-              @else if(nameControl?.getError('minlength')){
-              <li>Should be more than 3 characters</li>
-              }
-            </ul>
-          </div>
-        </div>
+  @if(nameControl?.errors && nameControl?.touched){
+  <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+    <span class="sr-only">Danger</span>
+    <div>
+      <ul class=" list-disc list-inside">
+        @if(nameControl?.getError('required')){
+        <li>This Field is required</li>
         }
+        @else if(nameControl?.getError('maxlength')){
+        <li>Should be less than 20 characters</li>
+        }
+        @else if(nameControl?.getError('minlength')){
+        <li>Should be more than 3 characters</li>
+        }
+      </ul>
+    </div>
+  </div>
+  }
 
 
-        <div class="relative z-0 w-full mb-5 group">
-          <input formControlName="email" type="email" name="floating_email" id="floating_email" class="form-input peer"
-            placeholder=" " required />
-          <label for="floating_email" class="form-label
+  <div class="relative z-0 w-full mb-5 group">
+    <input formControlName="email" type="email" name="floating_email" id="floating_email" class="form-input peer"
+      placeholder=" " required />
+    <label for="floating_email" class="form-label
          -translate-y-6 scale-75
          peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
          peer-focus:font-medium peer-focus:scale-75 peer-focus:-translate-y-6
          peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto
          peer-focus:!text-red-600">Email
-            address</label>
-        </div>
-        @if(registerForm.get('email')?.errors && registerForm.get('email')?.touched){
-        <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-          <span class="sr-only">Danger</span>
-          <div>
-            <ul class=" list-disc list-inside">
-              @if(registerForm.get('email')?.getError('required')){
-              <li>This Field is required</li>
-              }
-              @else if(registerForm.get('email')?.getError('email')){
-              <li>Please , enter a valid Email</li>
-              }
-            </ul>
-          </div>
-        </div>
+      address</label>
+  </div>
+  @if(registerForm.get('email')?.errors && registerForm.get('email')?.touched){
+  <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+    <span class="sr-only">Danger</span>
+    <div>
+      <ul class=" list-disc list-inside">
+        @if(registerForm.get('email')?.getError('required')){
+        <li>This Field is required</li>
         }
+        @else if(registerForm.get('email')?.getError('email')){
+        <li>Please , enter a valid Email</li>
+        }
+      </ul>
+    </div>
+  </div>
+  }
 
-        <div class="relative z-0 w-full mb-5 group">
-          <input formControlName="password" [type]="showPassword? 'text': 'password'" name="floating_password"
-            id="floating_password" class="form-input peer" placeholder=" " required />
-          <label for="floating_password" class="form-label
+  <div class="relative z-0 w-full mb-5 group">
+    <input formControlName="password" [type]="showPassword? 'text': 'password'" name="floating_password"
+      id="floating_password" class="form-input peer" placeholder=" " required />
+    <label for="floating_password" class="form-label
          -translate-y-6 scale-75
          peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
          peer-focus:font-medium peer-focus:scale-75 peer-focus:-translate-y-6
          peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto
          peer-focus:!text-red-600">Password</label>
-          <button type="button" (click)="togglePassword()"
-            class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
-            @if(!showPassword){
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274
+    <button type="button" (click)="togglePassword()"
+      class="absolute inset-y-0 right-0 hover:cursor-pointer flex items-center px-3 text-gray-500">
+      @if(!showPassword){
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274
         4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-            </svg>
-            }
-            @else{
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477
+      </svg>
+      }
+      @else{
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477
         0-8.268-2.943-9.542-7a9.956 9.956
         0 012.164-3.478m3.478-2.164A9.956
         9.956 0 0112 5c4.477 0 8.268
         2.943 9.542 7a9.956 9.956
         0 01-1.46 2.68M15 12a3 3
         0 11-6 0 3 3 0 016 0zM3 3l18 18" />
-            </svg>
-            }
+      </svg>
+      }
 
-          </button>
-        </div>
-        @if(registerForm.get('password')?.errors && registerForm.get('password')?.touched){
-        <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-          <span class="sr-only">Danger</span>
-          <div>
-            <ul class=" list-disc list-inside">
-              @if(registerForm.get('password')?.getError('required')){
-              <li>This Field is required</li>
-              }
-              @else if(registerForm.get('password')?.getError('pattern')){
-              <li>The password must be at least 6 chars and has at least one capital char</li>
-              }
-
-            </ul>
-          </div>
-        </div>
+    </button>
+  </div>
+  @if(registerForm.get('password')?.errors && registerForm.get('password')?.touched){
+  <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+    <span class="sr-only">Danger</span>
+    <div>
+      <ul class=" list-disc list-inside">
+        @if(registerForm.get('password')?.getError('required')){
+        <li>This Field is required</li>
+        }
+        @else if(registerForm.get('password')?.getError('pattern')){
+        <li>The password must be at least 6 chars and has at least one capital char</li>
         }
 
+      </ul>
+    </div>
+  </div>
+  }
 
-        <div class="relative z-0 w-full mb-5 group">
-          <input formControlName="rePassword" [type]="showRePassword? 'text': 'password'" name="repassword"
-            id="floating_repeat_password" class="form-input peer" placeholder=" " required />
-          <label for="floating_repeat_password" class="form-label
+
+  <div class="relative z-0 w-full mb-5 group">
+    <input formControlName="rePassword" [type]="showRePassword? 'text': 'password'" name="repassword"
+      id="floating_repeat_password" class="form-input peer" placeholder=" " required />
+    <label for="floating_repeat_password" class="form-label
          -translate-y-6 scale-75
          peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
          peer-focus:font-medium peer-focus:scale-75 peer-focus:-translate-y-6
          peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto
          peer-focus:!text-red-600">Confirm
-            password</label>
+      password</label>
 
-          <!-- Eye toggle button -->
-          <button type="button" (click)="toggleRePassword()"
-            class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
-            @if(!showRePassword){
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274
+    <!-- Eye toggle button -->
+    <button type="button" (click)="toggleRePassword()"
+      class="absolute inset-y-0 right-0 flex items-center hover:cursor-pointer px-3 text-gray-500">
+      @if(!showRePassword){
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274
         4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-            </svg>
-            }
-            @else{
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477
+      </svg>
+      }
+      @else{
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477
         0-8.268-2.943-9.542-7a9.956 9.956
         0 012.164-3.478m3.478-2.164A9.956
         9.956 0 0112 5c4.477 0 8.268
         2.943 9.542 7a9.956 9.956
         0 01-1.46 2.68M15 12a3 3
         0 11-6 0 3 3 0 016 0zM3 3l18 18" />
-            </svg>
-            }
+      </svg>
+      }
 
-          </button>
-        </div>
+    </button>
+  </div>
 
-        @if(registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched){
-        <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-          <span class="sr-only">Danger</span>
-          <div>
-            <ul class=" list-disc list-inside">
-              @if(registerForm.get('rePassword')?.getError('required')){
-              <li>This Field is required</li>
-              }
-              @else if(registerForm.get('rePassword')?.getError('pattern')){
-              <li>The password must be at least 6 chars and has at least one capital char</li>
-              }
-            </ul>
-          </div>
-        </div>
+  @if(registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched){
+  <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+    <span class="sr-only">Danger</span>
+    <div>
+      <ul class=" list-disc list-inside">
+        @if(registerForm.get('rePassword')?.getError('required')){
+        <li>This Field is required</li>
         }
-        @else if(registerForm.hasError('passwordMismatch') && registerForm.get('rePassword')?.touched ){
-        <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-          <ul class=" list-disc list-inside">
-            <li>Passwords do not match</li>
-          </ul>
-        </div>
+        @else if(registerForm.get('rePassword')?.getError('pattern')){
+        <li>The password must be at least 6 chars and has at least one capital char</li>
         }
+      </ul>
+    </div>
+  </div>
+  }
+  @else if(registerForm.hasError('passwordMismatch') && registerForm.get('rePassword')?.touched ){
+  <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+    <ul class=" list-disc list-inside">
+      <li>Passwords do not match</li>
+    </ul>
+  </div>
+  }
 
-        <div class="relative z-0 w-full mb-5 group">
-          <input formControlName="phone" type="tel" name="floating_phone" id="floating_phone" class="form-input peer"
-            placeholder=" " />
-          <label for="floating_phone" class="form-label
+  <div class="relative z-0 w-full mb-5 group">
+    <input formControlName="phone" type="tel" name="floating_phone" id="floating_phone" class="form-input peer"
+      placeholder=" " />
+    <label for="floating_phone" class="form-label
          -translate-y-6 scale-75
          peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
          peer-focus:font-medium peer-focus:scale-75 peer-focus:-translate-y-6
          peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto
          peer-focus:!text-red-600">Phone
-            number (123-456-7890)</label>
-        </div>
+      number (123-456-7890)</label>
+  </div>
 
-        @if(registerForm.get('phone')?.errors && registerForm.get('phone')?.touched){
-        <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-          <span class="sr-only">Danger</span>
-          <div>
-            <ul class=" list-disc list-inside">
-              @if(registerForm.get('phone')?.getError('required')){
-              <li>This Field is required</li>
-              }
-              @else if(registerForm.get('phone')?.getError('pattern')){
-              <li>Please Enter a valid Phone Number</li>
-              }
-            </ul>
-          </div>
-        </div>
+  @if(registerForm.get('phone')?.errors && registerForm.get('phone')?.touched){
+  <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+    <span class="sr-only">Danger</span>
+    <div>
+      <ul class=" list-disc list-inside">
+        @if(registerForm.get('phone')?.getError('required')){
+        <li>This Field is required</li>
         }
+        @else if(registerForm.get('phone')?.getError('pattern')){
+        <li>Please Enter a valid Phone Number</li>
+        }
+      </ul>
+    </div>
+  </div>
+  }
 
-        <button type="submit" [disabled]="isLoading" class="relative text-white bg-secondary transition duration-300 mt-10 block md:w-full
+  <button type="submit" [disabled]="isLoading" class="relative text-white bg-secondary transition duration-300 mt-10 block md:w-full
                hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300
                font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center
                hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed capitalize">
-          @if(isLoading){
-          <div role="status">
-            <svg aria-hidden="true" class="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-red-600"
-              viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-                fill="currentColor" />
-              <path
-                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                fill="currentFill" />
-            </svg>
-            <span class="sr-only">Loading...</span>
-          </div>
-          } @else {
-          submit
-          }
-
-        </button>
-        @if(errorMsg){
-        <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-          <p>{{errorMsg}}</p>
-        </div>
-        }
-
-      </form>
-
-      <p class="text-center text-gray-600 mt-6">
-        Already have account? <a routerLink="/login" class="font-medium hover:underline">Log in</a>
-      </p>
+    @if(isLoading){
+    <div role="status">
+      <svg aria-hidden="true" class="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-red-600"
+        viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+          fill="currentColor" />
+        <path
+          d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+          fill="currentFill" />
+      </svg>
+      <span class="sr-only">Loading...</span>
     </div>
+    } @else {
+    submit
+    }
+
+  </button>
+  @if(errorMsg){
+  <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+    <p>{{errorMsg}}</p>
   </div>
-</div>
+  }
+
+</form>
+
+<p class="text-center text-gray-600 mt-6">
+  Already have account? <a routerLink="/auth/login" class="font-medium hover:underline">Log in</a>
+</p>

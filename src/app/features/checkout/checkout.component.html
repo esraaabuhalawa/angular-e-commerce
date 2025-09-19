@@ -1,1 +1,87 @@
-<p>checkout works!</p>
+<div class="px-6 py-10 grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+
+  <!-- Billing Details -->
+  <div>
+    <h2 class="text-2xl font-bold mb-6">Billing Details</h2>
+
+    <form class="space-y-4">
+      <input type="text" placeholder="First Name*" class="border px-4 py-2 rounded w-full" />
+      <input type="text" placeholder="Company Name" class="border px-4 py-2 rounded w-full" />
+      <input type="text" placeholder="Street Address*" class="border px-4 py-2 rounded w-full" />
+      <input type="text" placeholder="Apartment, floor, etc. (optional)" class="border px-4 py-2 rounded w-full" />
+      <input type="text" placeholder="Town/City*" class="border px-4 py-2 rounded w-full" />
+      <input type="text" placeholder="Phone Number*" class="border px-4 py-2 rounded w-full" />
+      <input type="email" placeholder="Email Address*" class="border px-4 py-2 rounded w-full" />
+
+      <label class="flex items-center gap-2">
+        <input type="checkbox" checked />
+        Save this information for faster check-out next time
+      </label>
+    </form>
+  </div>
+
+  <!-- Order Summary -->
+  <div>
+    <!-- Cart Items -->
+    <div class="flex justify-between items-center border-b py-2">
+      <div class="flex items-center gap-3">
+        <img src="assets/images/lcd-monitor.png" alt="LCD Monitor" class="w-12 h-12 object-contain" />
+        <span>LCD Monitor</span>
+      </div>
+      <span>$650</span>
+    </div>
+
+    <div class="flex justify-between items-center border-b py-2">
+      <div class="flex items-center gap-3">
+        <img src="assets/images/gamepad.png" alt="H1 Gamepad" class="w-12 h-12 object-contain" />
+        <span>H1 Gamepad</span>
+      </div>
+      <span>$1100</span>
+    </div>
+
+    <!-- Totals -->
+    <div class="flex justify-between py-2">
+      <span>Subtotal:</span>
+      <span>$1750</span>
+    </div>
+    <div class="flex justify-between py-2">
+      <span>Shipping:</span>
+      <span>Free</span>
+    </div>
+    <div class="flex justify-between font-bold text-lg py-2 border-t">
+      <span>Total:</span>
+      <span>$1750</span>
+    </div>
+
+    <!-- Payment Methods -->
+    <div class="mt-4">
+      <label class="flex items-center gap-2">
+        <input type="radio" name="payment" value="bank" />
+        Bank
+        <img src="assets/images/payment-methods.png" alt="Payment Options" class="h-5 ml-2" />
+      </label>
+
+      <label class="flex items-center gap-2 mt-2">
+        <input type="radio" name="payment" value="cash" checked />
+        Cash on delivery
+      </label>
+    </div>
+
+    <!-- Coupon -->
+    <div class="flex mt-4 gap-2">
+      <input
+        type="text"
+        placeholder="Coupon Code"
+        class="border px-4 py-2 rounded w-full"
+      />
+      <button type="button" class="bg-red-500 text-white px-6 py-2 rounded">
+        Apply Coupon
+      </button>
+    </div>
+
+    <!-- Place Order -->
+    <button class="bg-red-500 text-white w-full py-3 rounded mt-4">
+      Place Order
+    </button>
+  </div>
+</div>

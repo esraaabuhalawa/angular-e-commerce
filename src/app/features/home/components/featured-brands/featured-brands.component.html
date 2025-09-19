@@ -4,7 +4,8 @@
     <h2>New Arrival</h2>
   </header>
 
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-4 w-full">
+  @if(allCategories.length > 0){
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4 w-full">
   <!-- Left big image -->
   <div class="md:col-span-6">
    <div class="bg-black pt-3 relative">
@@ -55,5 +56,6 @@
     </div>
   </div>
 </div>
+  }
 
 </section>

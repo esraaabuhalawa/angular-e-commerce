@@ -10,7 +10,8 @@
     <ng-template carouselSlide [id]="slide._id">
       <div class="category-card">
         <div class="image-wrapper">
-          <img [src]="slide.image" [alt]="slide.name" [title]="slide.name">
+          <img [src]="slide.image" [alt]="slide.name" [title]="slide.name" [routerLink]="['/products']"
+            [queryParams]="{ category: slide._id }" class="hover:cursor-pointer">
         </div>
         <div class="category-name">
           {{ slide.name }}

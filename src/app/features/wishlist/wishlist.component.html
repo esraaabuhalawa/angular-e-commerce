@@ -1,0 +1,36 @@
+<section class="py-12 md:px-12">
+  <!-- Header -->
+  <header class="mb-7 section-header">
+    <h1 class="text-gray-800 font-bold text-xl">Wishlist ({{wishlist.length}})</h1>
+  </header>
+
+  <!-- CASE 1: Empty Wishlist -->
+  @if(wishlist.length === 0) {
+  <div class="flex flex-col items-center justify-center text-center py-20">
+    <i class="fa-regular fa-hourglass mb-6 text-gray-500 text-4xl" ></i>
+    <h3 class="text-xl font-semibold mb-2">Your wishlist is empty</h3>
+    <p class="text-gray-500 mb-6">Start exploring our products and save your favorites here.</p>
+    <a routerLink="/products"
+      class="py-3 px-12 bg-secondary text-base text-white hover:cursor-pointer transition duration-300 hover:bg-transparent border-2 rounded-[4px] border-red-600 hover:text-secondary">
+      Browse Products
+    </a>
+  </div>
+  }
+
+  <!-- CASE 2: Wishlist Has Products -->
+  @if(wishlist.length > 0) {
+  <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    @for (item of wishlist; track item.id) {
+    <app-product-card [item]="item" />
+    }
+  </div>
+
+  <!-- View All Button -->
+  <div class="mt-12 flex justify-center items-center">
+    <a routerLink="/products"
+      class="py-3 px-12 bg-secondary text-center text-base text-white hover:cursor-pointer transition duration-300 hover:bg-transparent border-2 rounded-[4px] border-red-600 hover:text-secondary">
+      View All Products
+    </a>
+  </div>
+  }
+</section>

@@ -1,3 +1,15 @@
-<app-navbar [authPages]="true"/>
-<router-outlet />
+<app-navbar [authPages]="true" />
+<div class="md:min-h-screen flex flex-col">
+  <!-- Main Content -->
+  <div class="flex flex-col lg:flex-row flex-1 md:pr-10 py-10">
+    <!-- Left Image -->
+    <div class="w-full pl-10 lg:pl-0 mb-7 lg:mb-0 lg:w-1/2 hidden md:flex  justify-center">
+      <img src="/images/login-1.png" alt="Shopping Cart & Phone" class="object-cover w-full">
+    </div>
 
+    <!-- Right Signup Form -->
+    <div class="lg:w-1/2 flex flex-col justify-center px-4 sm:px-16 mb-8 lg:mb-3">
+      <router-outlet />
+    </div>
+  </div>
+</div>

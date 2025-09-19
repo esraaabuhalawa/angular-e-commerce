@@ -1,1 +1,98 @@
-<p>cart works!</p>
+<div class="px-6 py-10">
+  <!-- Breadcrumb -->
+  <p class="text-sm text-gray-500 mb-6">Home / <span class="font-semibold">Cart</span></p>
+
+  <!-- Cart Table -->
+  <div class="overflow-x-auto">
+    <table class="w-full text-left border-separate border-spacing-y-4">
+      <thead>
+        <tr class="text-gray-600">
+          <th class="p-2">Product</th>
+          <th class="p-2">Price</th>
+          <th class="p-2">Quantity</th>
+          <th class="p-2">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white shadow-sm rounded-lg">
+          <td class="flex items-center gap-3 p-3">
+            <button class="text-red-500 font-bold">✕</button>
+            <img src="https://via.placeholder.com/64" alt="Product 1" class="w-16 h-16 object-contain rounded" />
+            <span>Product 1</span>
+          </td>
+          <td class="p-3">$25.00</td>
+          <td class="p-3">
+            <select class="border rounded px-2 py-1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </td>
+          <td class="p-3">$25.00</td>
+        </tr>
+
+        <tr class="bg-white shadow-sm rounded-lg">
+          <td class="flex items-center gap-3 p-3">
+            <button class="text-red-500 font-bold">✕</button>
+            <img src="https://via.placeholder.com/64" alt="Product 2" class="w-16 h-16 object-contain rounded" />
+            <span>Product 2</span>
+          </td>
+          <td class="p-3">$40.00</td>
+          <td class="p-3">
+            <select class="border rounded px-2 py-1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </td>
+          <td class="p-3">$80.00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Cart Actions -->
+  <div class="flex justify-between mt-6">
+    <button class="border px-6 py-2 rounded">Return To Shop</button>
+    <button class="border px-6 py-2 rounded">Update Cart</button>
+  </div>
+
+  <!-- Coupon + Cart Total -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+    <!-- Coupon -->
+    <div>
+      <input
+        type="text"
+        placeholder="Coupon Code"
+        class="border px-4 py-2 rounded w-2/3"
+      />
+      <button class="bg-red-500 text-white px-6 py-2 rounded ml-2">
+        Apply Coupon
+      </button>
+    </div>
+
+    <!-- Cart Total -->
+    <div class="border p-6 rounded-lg shadow-sm">
+      <h3 class="font-bold text-lg mb-4">Cart Total</h3>
+      <div class="flex justify-between mb-2">
+        <span>Subtotal:</span>
+        <span>$105.00</span>
+      </div>
+      <div class="flex justify-between mb-2">
+        <span>Shipping:</span>
+        <span>Free</span>
+      </div>
+      <div class="flex justify-between font-bold text-lg mb-4">
+        <span>Total:</span>
+        <span>$105.00</span>
+      </div>
+      <button routerLink="/checkout" class="bg-red-500 text-white w-full py-3 rounded">
+        Proceed to checkout
+      </button>
+    </div>
+  </div>
+</div>

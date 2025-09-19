@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 1rem;
+
+  th {
+    font-weight: 500;
+    text-align: left;
+    padding: 0.75rem;
+  }
+
+  td {
+    padding: 0.75rem;
+    vertical-align: middle;
+  }
+}

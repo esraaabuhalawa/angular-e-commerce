@@ -1,12 +1,25 @@
 <div
   class="w-full max-w-sm bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
   <!-- Image Section -->
-  <div class="rounded-t-xl bg-gray-50 flex items-center justify-center">
+  <div class="rounded-t-xl bg-gray-50 flex items-center justify-center relative">
+    <!-- Add to Wishlist -->
+    <button type="button"
+      class="absolute top-3 right-12 p-2 rounded-full bg-white shadow hover:bg-gray-100 transition z-[20000]"
+      (click)="addToWishlist(item.id)">
+      <i class="fa-solid fa-heart text-gray-500"></i>
+    </button>
+
+    <!-- Remove from Wishlist -->
+    <button type="button" class="absolute top-3 right-3 p-2 rounded-full bg-white shadow hover:bg-gray-100 transition"
+      (click)="removeFromWishlist(item.id)">
+      <i class="fa-solid fa-heart text-red-500"></i>
+    </button>
+    
     <!-- Product Image -->
-    <a [routerLink]="'/products/' + item.slug + '/' + item._id" class="block w-full">
+    <div class="block w-full"> <!---[routerLink]="'/products/' + item.slug + '/' + item._id"-->
       <img class="w-[240px] h-[240px] object-contain mx-auto p-4 transition-transform duration-300 hover:scale-105"
         [src]="item.imageCover" [alt]="item.title" />
-    </a>
+    </div>
   </div>
 
   <!-- Info Section -->
@@ -27,8 +40,6 @@
         {{ item.title }}
       </h5>
     </a>
-
-
 
     <!-- Price -->
     <p class="text-lg font-bold text-secondary mt-2">

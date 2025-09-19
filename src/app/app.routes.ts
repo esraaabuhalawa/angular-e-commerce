@@ -10,6 +10,9 @@ import { ProductDetailsComponent } from './features/product-details/product-deta
 import { NotFoundComponent } from './features/not-found/not-found.component';
 import { CartComponent } from './features/cart/cart.component';
 import { CheckoutComponent } from './features/checkout/checkout.component';
+import { BrandsComponent } from './features/brands/brands.component';
+import { ForgetPasswordComponent } from './core/auth/forget-password/forget-password.component';
+import { WishlistComponent } from './features/wishlist/wishlist.component';
 
 export const routes: Routes = [
   // Redirect root to home
@@ -20,7 +23,8 @@ export const routes: Routes = [
     component: AuthLayoutComponent,
     children: [
       { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent }
+      { path: 'register', component: RegisterComponent },
+      {path: 'forget-password', component: ForgetPasswordComponent}
     ]
   },
 
@@ -33,8 +37,10 @@ export const routes: Routes = [
       { path: 'products', component: ProductsComponent },
       { path: 'products/:id', component: ProductDetailsComponent },
       { path: 'products/:slug/:id', component: ProductDetailsComponent },
+      { path: 'brands' , component: BrandsComponent},
       { path: 'categories', component: CategoriesComponent },
       { path: 'cart', component: CartComponent },
+      { path: 'wishlist', component: WishlistComponent},
       { path: 'checkout', component: CheckoutComponent },
       { path: '**', component: NotFoundComponent }
     ]

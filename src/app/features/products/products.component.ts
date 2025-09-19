@@ -133,17 +133,30 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+      this.route.queryParams.subscribe(params => {
+    // Reset filters
+    this.selectedCategory = '';
+    this.selectedBrand ='';
+
+    // Check for category query param
     if (params['category']) {
       this.selectedCategory = params['category'];
+    }
 
-      // Use the same filtering logic
+    // Check for brand query param
+    if (params['brand']) {
+      this.selectedBrand = params['brand'];
+    }
+
+    // Apply filters if either category or brand exists
+    if (this.selectedCategory || this.selectedBrand) {
       this.applyFilters();
     } else {
       // Default fetch if no query params
       this.fetchProducts();
     }
-  })
+  });
+
     this.fetchCategories();
     this.fetchBrands();
   }

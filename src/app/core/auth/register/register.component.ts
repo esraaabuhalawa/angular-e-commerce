@@ -1,8 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Component, Inject, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
+import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -10,10 +13,23 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   showRePassword: boolean = false;
-  errorMsg:string = "";
+  errorMsg: string = "";
   isLoading: boolean = false;
+  userData: object = {}
+  token: string = ''
+  registerSub: Subscription = new Subscription();
+
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router)
+  private readonly fb = inject(FormBuilder);
+  private readonly userService = inject(UserService)
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
+
   toggleRePassword() {
     this.showRePassword = !this.showRePassword;
   }
@@ -21,13 +37,22 @@ export class RegisterComponent {
   togglePassword() {
     this.showPassword = !this.showPassword;
   }
-  registerForm: FormGroup = new FormGroup({
-    name: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]),
-    email: new FormControl(null, [Validators.required, Validators.email]),
-    password: new FormControl(null, [Validators.required, Validators.pattern(/^(?=.*[A-Z]).{6,}$/)]),
-    rePassword: new FormControl(null, [Validators.required, Validators.pattern(/^(?=.*[A-Z]).{6,}$/)]),
-    phone: new FormControl(null, [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)])
-  }, { validators: this.confirmPassword })
+
+  registerForm!: FormGroup;
+
+  initForm(): void {
+    this.registerForm = this.fb.group({
+      name: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.pattern(/^(?=.*[A-Z]).{6,}$/)]],
+      rePassword: [null, [Validators.required, Validators.pattern(/^(?=.*[A-Z]).{6,}$/)]],
+      phone: [null, [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)]]
+    }, { validators: this.confirmPassword })
+  }
+
+  ngOnInit(): void {
+    this.initForm();
+  }
 
   confirmPassword(group: AbstractControl) {
     let password = group.get('password');
@@ -38,33 +63,42 @@ export class RegisterComponent {
     return password.value === repassword.value ? null : { passwordMismatch: true };
   }
 
-  private readonly authService = inject(AuthService);
-  private readonly router = inject(Router)
+
   submitForm(): void {
     if (this.registerForm.valid) {
+      this.registerSub.unsubscribe();
       this.isLoading = true
-      this.authService.signUp(this.registerForm.value).subscribe ({
-        next: (res:any) => {
-          if(res.message === "success"){
+      this.registerSub = this.authService.signUp(this.registerForm.value).subscribe({
+        next: (res: any) => {
+          if (res.message === "success") {
+            this.userService.setUser(res.user);
+            this.userData = res.user;
+            // ✅ Only set localStorage if in browser
+            if (isPlatformBrowser(this.platformId)) {
+              localStorage.setItem('authToken', this.token);
+              localStorage.setItem('userData', JSON.stringify(this.userData));
+            }
+            this.router.navigate(['/home'])
             this.errorMsg = '';
-            this.router.navigate(['/auth/login'])
+            // this.router.navigate(['/auth/login'])
           }
           this.isLoading = false
         },
-        error: (err) =>{
-           if(err.error.message){
+        error: (err) => {
+          if (err.error.message) {
             this.errorMsg = err.error.message;
           }
           this.isLoading = false
-         // console.log(err)
+          // console.log(err)
         },
-        complete :() => {
+        complete: () => {
           this.isLoading = false
         }
       })
-      console.log(this.registerForm.value)
+      //console.log(this.registerForm.value)
     } else {
-      console.log('is in valid ')
+      this.registerForm.setErrors({ passwordMismatch: true })
+      this.registerForm.markAllAsTouched();
     }
   }
 }
