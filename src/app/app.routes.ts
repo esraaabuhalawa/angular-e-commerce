@@ -15,6 +15,7 @@ import { ForgetPasswordComponent } from './core/auth/forget-password/forget-pass
 import { WishlistComponent } from './features/wishlist/wishlist.component';
 import { authGuard } from './core/guards/auth-guard';
 import { isLoggedGuard } from './core/guards/is-logged-guard';
+import { AllOrdersComponent } from './features/all-orders/all-orders.component';
 
 export const routes: Routes = [
   // Redirect root to home
@@ -42,8 +43,9 @@ export const routes: Routes = [
       { path: 'brands', component: BrandsComponent, title: 'Brands',canActivate: [authGuard]},
       { path: 'categories', component: CategoriesComponent, title: 'Categories',canActivate: [authGuard] },
       { path: 'cart', component: CartComponent, title: 'Cart' , canActivate: [authGuard]},
+      { path: 'allorders', component: AllOrdersComponent, title: 'All Orders' , canActivate: [authGuard]},
       { path: 'wishlist', component: WishlistComponent, title: 'Wishlist' , canActivate: [authGuard] },
-      { path: 'checkout', component: CheckoutComponent, title: 'Checkout' , canActivate: [authGuard] },
+      { path: 'checkout/:id', component: CheckoutComponent, title: 'Checkout' , canActivate: [authGuard] },
       { path: '**', component: NotFoundComponent, title: 'Not Found' }
     ]
   }

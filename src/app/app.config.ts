@@ -24,7 +24,7 @@ export const appConfig: ApplicationConfig = {
       ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
-      preventDuplicates: true,
+      preventDuplicates: false,
       closeButton: true,
       progressBar: true,
     })),

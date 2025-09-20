@@ -1,21 +1,26 @@
-<div class="w-full max-w-sm bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+<div
+  class="w-full max-w-sm bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
   <!-- Image Section -->
   <div class="rounded-t-xl bg-gray-50 flex items-center justify-center relative">
-    <!-- Add to Wishlist -->
+    <!-- Wishlist Button -->
     <button type="button"
-      class="absolute top-3 right-12 p-2 rounded-full bg-white shadow hover:bg-gray-100 transition z-[20000]"
-      (click)="addToWishlist(item.id)">
-      <i class="fa-solid fa-heart text-gray-500"></i>
-    </button>
-
-    <!-- Remove from Wishlist -->
-    <button type="button" class="absolute top-3 right-3 p-2 rounded-full bg-white shadow hover:bg-gray-100 transition"
-      (click)="removeFromWishlist(item.id)">
-      <i class="fa-solid fa-heart text-red-500"></i>
+      class="absolute top-3 hover:cursor-pointer right-3 p-2 rounded-full bg-white shadow hover:bg-gray-100 transition z-[10000]"
+      (click)="toggleWishlist(item.id)" [disabled]="wishlistLoading[item._id]">
+      @if(wishlistLoading[item.id]) {
+      <i class="fa-solid fa-spinner fa-spin text-gray-400"></i>
+      } @else {
+      <i class="fa-solid fa-heart" [class]="
+          wishlistService.isInWishlist(item._id)
+            ? 'text-red-500'
+            : 'text-gray-500'
+        ">
+      </i>
+      }
     </button>
 
     <!-- Product Image -->
-    <div class="block w-full"> <!---[routerLink]="'/products/' + item.slug + '/' + item._id"-->
+    <div class="block w-full hover:cursor-pointer" [routerLink]="'/products/' + item.slug + '/' + item._id">
+      <!---[routerLink]="'/products/' + item.slug + '/' + item._id"-->
       <img class="w-[240px] h-[240px] object-contain mx-auto p-4 transition-transform duration-300 hover:scale-105"
         [src]="item.imageCover" [alt]="item.title" />
     </div>
@@ -25,11 +30,15 @@
   <div class="px-5 pb-5 mt-3">
     <!-- Brand & Category -->
     <div class="flex flex-wrap items-center justify-between mb-3 gap-2 mt-1 text-xs text-gray-600">
-      <span class=" py-0.5 bg-gray-100 rounded-md">
-        Brand: <span class="font-medium text-gray-800">{{ item.brand.name }}</span>
+      <span class="py-0.5 bg-gray-100 rounded-md">
+        <span class="font-medium text-gray-800 px-2">{{
+          item.brand.name
+          }}</span>
       </span>
-      <span class=" py-0.5 bg-gray-100 rounded-md">
-        Category: <span class="font-medium text-gray-800">{{ item.category.name }}</span>
+      <span class="py-0.5 bg-gray-100 rounded-md">
+        <span class="font-medium text-gray-800 px-2">{{
+          item.category.name
+          }}</span>
       </span>
     </div>
 
@@ -42,7 +51,8 @@
 
     <!-- Price -->
     <p class="text-lg font-bold text-secondary mt-2">
-      {{ item.price | currency : 'EGP'}} <span class="text-sm font-medium"></span>
+      {{ item.price | currency : "EGP" }}
+      <span class="text-sm font-medium"></span>
     </p>
 
     <!-- Ratings -->
@@ -54,9 +64,13 @@
     </div>
 
     <!-- Add to Cart Button -->
-    <button (click)="addToCart()"
-      class="mt-4 w-full hover:cursor-pointer bg-black text-white text-sm py-2.5 rounded-lg hover:bg-secondary transition-colors duration-300 flex items-center justify-center">
-      <i class="fa-solid fa-cart-shopping mr-2"></i> Add to Cart
+    <button (click)="addToCart(item._id)" [disabled]="loading"
+      class="mt-4 w-full bg-black text-white text-sm py-2.5 rounded-lg hover:bg-secondary transition-colors duration-300 flex items-center justify-center"
+      [class.cursor-not-allowed]="loading" [class.cursor-pointer]="!loading">
+      @if(loading){
+      <i class="fa-solid fa-spinner fa-spin text-gray-400"></i>
+      }@else {
+      <i class="fa-solid fa-cart-shopping mr-2"></i> Add to Cart }
     </button>
   </div>
 </div>

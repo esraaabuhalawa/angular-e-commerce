@@ -1,10 +1,12 @@
-import { Component, ElementRef, HostListener, Inject, inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { FlowbiteService } from '../../../core/services/flowbite.service';
 import { initFlowbite } from 'flowbite';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { UserService } from '../../../core/auth/services/user.service';
-import { CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../core/auth/services/auth.service';
+import { CartService } from '../../../features/cart/services/cart.service';
+import { Subscription } from 'rxjs';
 // import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-navbar',
@@ -13,12 +15,10 @@ import { AuthService } from '../../../core/auth/services/auth.service';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {
-  constructor(private flowbiteService: FlowbiteService,  private eRef: ElementRef) { }
+  constructor(private flowbiteService: FlowbiteService, private eRef: ElementRef) { }
 
   private readonly userService = inject(UserService);
   private readonly authService = inject(AuthService);
-  // private readonly router = inject(Router);
-  // private readonly cookieService = inject(CookieService);
 
   @Input() authPages: boolean = false;
 
@@ -39,13 +39,11 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.authService.logOut();
-    // this.userService.clearUser();
-    // if (isPlatformBrowser(this.platformId)) {
-    //   //localStorage.removeItem('authToken');
-    //   this.cookieService.delete('authToken');
-    //   this.router.navigate(['/auth/login']);
-    // }
   }
+
+  private readonly cartService = inject(CartService);
+  cartCount$ = this.cartService.cartCount$;
+
 
   ngOnInit(): void {
     this.flowbiteService.loadFlowbite((flowbite) => {

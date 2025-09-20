@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
 import { StarRatingComponent } from "../../shared/components/star-rating/star-rating.component";
 import { SimilarProductsComponent } from "../../shared/components/similar-products/similar-products.component";
+import { CartService } from '../cart/services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-details',
@@ -19,7 +21,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   fetchData: Subscription | null = null;
   fetchId: Subscription | null = null;
   isLoading: boolean = false
- selectedImage: string | null = null;
+  selectedImage: string | null = null;
 
   private readonly productDetailService = inject(ProductDetailsService);
   private readonly activateRoute = inject(ActivatedRoute);
@@ -32,9 +34,9 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     })
   }
 
-changeImageSrc(image: string) {
-  this.selectedImage = image;
-}
+  changeImageSrc(image: string) {
+    this.selectedImage = image;
+  }
 
   fetchProductDetails() {
     this.isLoading = true;
@@ -53,13 +55,7 @@ changeImageSrc(image: string) {
     })
   }
 
-   sizes: string[] = ['XS', 'S', 'M', 'L', 'XL'];
-  selectedSize: string = 'M';   // default selected size
   quantity: number = 1;
-
-  selectSize(size: string) {
-    this.selectedSize = size;
-  }
 
   increaseQty() {
     this.quantity++;
@@ -71,10 +67,37 @@ changeImageSrc(image: string) {
     }
   }
 
+  private readonly cartService = inject(CartService);
+  private readonly toasterService = inject(ToastrService)
+  loading: boolean = false;
+
+  addToCart() {
+    this.loading = true;
+    this.cartService.addProductToCart({ productId: this.id }).subscribe({
+      next: (res) => {
+        this.loading = false;
+        this.toasterService.success(res.message);
+
+        const recentProduct = res.data.products.find(
+          (p: any) => p.product === this.id
+        );
+
+        if (recentProduct) {
+          this.quantity = recentProduct.count;
+        }
+
+      },
+      error: (err) => {
+        this.loading = false;
+        this.toasterService.error(err.message);
+        console.error(err);
+      }
+    });
+  }
+
   ngOnInit(): void {
     this.getPageRoute();
     this.fetchProductDetails();
-
   }
 
   ngOnDestroy(): void {

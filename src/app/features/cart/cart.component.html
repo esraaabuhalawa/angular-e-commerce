@@ -1,98 +1,119 @@
-<div class="px-6 py-10">
+<div class="px-6 sm:px-12 py-10">
   <!-- Breadcrumb -->
   <p class="text-sm text-gray-500 mb-6">Home / <span class="font-semibold">Cart</span></p>
 
-  <!-- Cart Table -->
-  <div class="overflow-x-auto">
-    <table class="w-full text-left border-separate border-spacing-y-4">
-      <thead>
-        <tr class="text-gray-600">
-          <th class="p-2">Product</th>
-          <th class="p-2">Price</th>
-          <th class="p-2">Quantity</th>
-          <th class="p-2">Subtotal</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="bg-white shadow-sm rounded-lg">
-          <td class="flex items-center gap-3 p-3">
-            <button class="text-red-500 font-bold">✕</button>
-            <img src="https://via.placeholder.com/64" alt="Product 1" class="w-16 h-16 object-contain rounded" />
-            <span>Product 1</span>
-          </td>
-          <td class="p-3">$25.00</td>
-          <td class="p-3">
-            <select class="border rounded px-2 py-1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </td>
-          <td class="p-3">$25.00</td>
-        </tr>
-
-        <tr class="bg-white shadow-sm rounded-lg">
-          <td class="flex items-center gap-3 p-3">
-            <button class="text-red-500 font-bold">✕</button>
-            <img src="https://via.placeholder.com/64" alt="Product 2" class="w-16 h-16 object-contain rounded" />
-            <span>Product 2</span>
-          </td>
-          <td class="p-3">$40.00</td>
-          <td class="p-3">
-            <select class="border rounded px-2 py-1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </td>
-          <td class="p-3">$80.00</td>
-        </tr>
-      </tbody>
-    </table>
+  @if(loading){
+  <app-loader />
+  }@else {
+  @if(cartItems.length === 0){
+  <!-- Empty Cart -->
+  <div class="text-center py-16">
+    <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Empty Cart"
+      class="w-32 h-32 mx-auto mb-6 opacity-70" />
+    <h2 class="text-2xl font-semibold mb-2">Your Cart is Empty 🛒</h2>
+    <p class="text-gray-500 mb-10">Looks like you haven’t added any items yet.</p>
+    <a routerLink="/products" class="bg-red-500 text-white px-6 py-3 rounded shadow hover:bg-red-600 transition">
+      Start Shopping
+    </a>
   </div>
+  } @else {
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-10">
+    <!-- Cart Table -->
+    <div class="md:col-span-8">
+      <header class="mb-7 section-header">
+        <h1 class="text-gray-800 font-bold text-xl">Cart ({{cartItems.length}})</h1>
+      </header>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-separate border-spacing-y-4 ">
+          <thead>
+            <tr class="text-gray-600">
+              <th class="p-2">Product</th>
+              <th class="p-2">Price</th>
+              <th class="p-2">Quantity</th>
+              <th class="p-2">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (product of cartItems; track $index) {
+            <tr class="bg-white shadow-sm rounded-lg">
+              <td class="p-4">
+                <div class="flex items-center gap-4">
+                  <!-- Product Image -->
+                  <div class="w-24 h-24 flex items-center justify-center border border-gray-200 rounded-lg bg-gray-50">
+                    <img [src]="product.product.imageCover" alt="{{ product.product.title }}"
+                      class="max-h-full max-w-full object-contain rounded" />
+                  </div>
 
-  <!-- Cart Actions -->
-  <div class="flex justify-between mt-6">
-    <button class="border px-6 py-2 rounded">Return To Shop</button>
-    <button class="border px-6 py-2 rounded">Update Cart</button>
-  </div>
+                  <!-- Product Info -->
+                  <div class="flex flex-col gap-2 w-full">
+                    <!-- Title -->
+                    <h2 class="font-semibold text-gray-800 text-lg line-clamp-1">
+                      {{ product.product.title }}
+                    </h2>
 
-  <!-- Coupon + Cart Total -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-    <!-- Coupon -->
-    <div>
-      <input
-        type="text"
-        placeholder="Coupon Code"
-        class="border px-4 py-2 rounded w-2/3"
-      />
-      <button class="bg-red-500 text-white px-6 py-2 rounded ml-2">
-        Apply Coupon
-      </button>
+                    <div class="flex items-center j gap-3">
+                      <!-- Quantity Counter -->
+                      <div class="flex items-center border rounded-md border-gray-400 overflow-hidden shadow-sm">
+                        <button (click)="decreaseQty(product)"
+                          class="transition px-3 py-1 text-lg border-gray-400 font-bold border-r hover:bg-red-500 hover:text-white hover:cursor-pointer">
+                          −
+                        </button>
+                        <span class="text-center px-4 min-w-[40px] font-medium">{{ product.count }}</span>
+                        <button (click)="increaseQty(product)"
+                          class="transition px-3 py-1 text-lg border-gray-400 font-bold border-l hover:bg-green-700 hover:text-white hover:cursor-pointer">
+                          +
+                        </button>
+                      </div>
+
+                      <!-- Remove Button -->
+                      <button (click)="removeProduct(product.product._id)" class="flex items-center text-red-500 hover:text-red-700 font-medium gap-1 transition hover:cursor-pointer">
+                        <i class="fa-solid fa-trash-can"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </td>
+
+              <td class="p-3">{{ product.price | currency:'EGP' }}</td>
+              <td class="p-3">{{ product.count }}</td>
+              <td class="p-3">{{ product.count * product.price }}</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Cart Actions -->
+      <div class="flex justify-between mt-6">
+        <button routerLink="/products"
+          class="bg-red-500 text-white px-3  rounded shadow hover:bg-red-600 transition border py-2 hover:cursor-pointer">Return To Shop</button>
+           <button (click)="emptyCart()" class="border px-6 py-2 rounded hover:border-red-600 hover:bg-red-600 transition hover:cursor-pointer hover:text-white ">Empty Cart</button>
+        </div>
     </div>
 
     <!-- Cart Total -->
-    <div class="border p-6 rounded-lg shadow-sm">
-      <h3 class="font-bold text-lg mb-4">Cart Total</h3>
-      <div class="flex justify-between mb-2">
-        <span>Subtotal:</span>
-        <span>$105.00</span>
+    <div class="lg:col-span-4">
+      <div class="border border-gray-400 p-6 rounded-lg shadow-sm">
+        <h3 class="font-bold text-lg mb-4">Cart Total</h3>
+        <div class="flex justify-between mb-2">
+          <span>Subtotal:</span>
+          <span>{{ total | currency:'EGP' }}</span>
+        </div>
+        <div class="flex justify-between mb-2">
+          <span>Shipping:</span>
+          <span>Free</span>
+        </div>
+        <div class="flex justify-between font-bold text-lg mb-4">
+          <span>Total:</span>
+          <span>{{ total | currency:'EGP' }}</span>
+        </div>
+        <button [routerLink]="['/checkout/' , cartId ]" class="bg-red-500 text-white w-full py-3 rounded hover:bg-red-600 transition border py-2 hover:cursor-pointer">
+          Proceed to checkout
+        </button>
       </div>
-      <div class="flex justify-between mb-2">
-        <span>Shipping:</span>
-        <span>Free</span>
-      </div>
-      <div class="flex justify-between font-bold text-lg mb-4">
-        <span>Total:</span>
-        <span>$105.00</span>
-      </div>
-      <button routerLink="/checkout" class="bg-red-500 text-white w-full py-3 rounded">
-        Proceed to checkout
-      </button>
     </div>
   </div>
+  }
+  }
+
 </div>

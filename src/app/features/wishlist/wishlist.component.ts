@@ -5,33 +5,27 @@ import { RouterLink } from '@angular/router';
 import { WishlistService } from './services/wishlist.service';
 import { Subscription } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { LoaderComponent } from "../../shared/components/loader/loader.component";
+
 @Component({
   selector: 'app-wishlist',
-  imports: [RouterLink, ProductCardComponent],
+  imports: [RouterLink, ProductCardComponent, CommonModule, LoaderComponent],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.scss'
 })
 export class WishlistComponent implements OnInit, OnDestroy {
-  wishlist: Product[] = [];
-  wishlistSub: Subscription | null = null
   private readonly wishlistService = inject(WishlistService);
   private readonly platformId = inject(PLATFORM_ID)
 
-  getWishLists(): void {
-    this.wishlistSub = this.wishlistService.userWishlist().subscribe({
-      next: (res) => {
-        this.wishlist = res.data
-      }
-    })
-  }
+  wishlistItems$ = this.wishlistService.wishlist$;
+  isLoading$ = this.wishlistService.isLoading$;
+
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.getWishLists();
+      this.wishlistService.loadWishlist();
     }
   }
   ngOnDestroy(): void {
-    if (this.wishlistSub) {
-      this.wishlistSub.unsubscribe()
-    }
   }
 }

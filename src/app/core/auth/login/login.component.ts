@@ -62,9 +62,6 @@ export class LoginComponent implements OnInit {
             if (isPlatformBrowser(this.platformId)) {
               this.cookieService.set('authToken', res.token);
               this.authService.decodeToken();
-              //localStorage.setItem('authToken', this.token);
-
-              //localStorage.setItem('userData', JSON.stringify(this.userData));
             }
             this.router.navigate(['/home'])
             this.isLoading = false
