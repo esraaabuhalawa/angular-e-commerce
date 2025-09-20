@@ -1,52 +1,106 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
-interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-  image: string;
-}
+import { Subscription } from 'rxjs';
+import { CartService } from './services/cart.service';
+import { CurrencyPipe } from '@angular/common';
+import { Cart } from './interface/cart.interface';
+import { LoaderComponent } from "../../shared/components/loader/loader.component";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CurrencyPipe, LoaderComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
-export class CartComponent {
-  cartItems: CartItem[] = [
-    { id: '1', name: 'LCD Monitor', price: 650, quantity: 1, image: '/images/lcd-monitor.png' },
-    { id: '2', name: 'H1 Gamepad', price: 550, quantity: 2, image: '/images/gamepad.png' }
-  ];
+export class CartComponent implements OnInit, OnDestroy {
+  cartItems: Cart[] = [];
+  private readonly cartService = inject(CartService);
+  cartSub: Subscription | null = null;
+  loading: boolean = false;
+  cartLength: number = 0;
+  total: number = 0;
 
-  couponCode: string = '';
+  private readonly toasterService = inject(ToastrService);
 
-  get subtotal(): number {
-    return this.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  increaseQty(product: any) {
+    product.count++;
+    this.cartService.updateProductQuantity(product.product._id, { count: product.count }).subscribe({
+      next: (res) => {
+        this.toasterService.success('Quantity updated Successfully');
+      },
+      error: () => {
+        product.count--; // rollback on error
+        this.toasterService.error('Failed to update quantity');
+      }
+    });
   }
 
-  get shipping(): string {
-    return 'Free';
+  decreaseQty(product: any) {
+    if (product.count > 1) {
+      product.count--;
+      this.cartService.updateProductQuantity(product.product._id, { count: product.count }).subscribe({
+        next: (res) => {
+          this.toasterService.success('Quantity updated Successfully');
+        },
+        error: () => {
+          product.count++;
+          this.toasterService.error('Failed to update quantity');
+        }
+      });
+    }
   }
 
-  get total(): number {
-    return this.subtotal;
+  removeProduct(productId:any){
+    this.cartService.removeProductFromCart(productId).subscribe({
+      next: (res) => {
+        this.cartItems = res.data.products;
+        this.toasterService.success('Product deleted Successfully');
+      },
+      error: (err) => {
+        this.toasterService.error('Failed to delete product');
+        console.log(err)
+      }
+    })
   }
 
-  ngOnInit(): void {}
+  emptyCart(){
+    this.cartService.clearUserCart().subscribe({
+      next: (res) => {
+       this.fetchCartItems();
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
+  }
+  cartId!:string;
 
-  updateCart() {
-    console.log('Cart updated:', this.cartItems);
+  fetchCartItems() {
+    this.loading = true;
+    this.cartSub = this.cartService.getCartProducts().subscribe({
+      next: (res) => {
+        this.loading = false;
+        this.cartLength = res.numOfCartItems;
+        this.total = res.data.totalCartPrice;
+        this.cartId = res.data._id
+        console.log(this.cartId);
+        this.cartItems = res.data.products;
+      },
+      error: (err) => {
+        this.loading = false
+      }
+    })
   }
 
-  removeItem(itemId: string) {
-    this.cartItems = this.cartItems.filter(item => item.id !== itemId);
+  ngOnInit(): void {
+    this.fetchCartItems();
   }
 
-  applyCoupon() {
-    console.log('Coupon applied:', this.couponCode);
+  ngOnDestroy(): void {
+    if (this.cartSub) {
+      this.cartSub.unsubscribe();
+    }
   }
 }

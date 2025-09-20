@@ -33,9 +33,9 @@
           <span class="text-[var(--text-muted)] ml-2 me-3">( {{ product.ratingsQuantity}} Reviews)</span>
           <span> | </span>
           @if(product.quantity !== 0) {
-            <span class="text-green-400 ml-4"> In Stock </span>
+          <span class="text-green-400 ml-4"> In Stock </span>
           }@else{
-             <span class="text-red-400 ml-4"> Sold Out </span>
+          <span class="text-red-400 ml-4"> Sold Out </span>
           }
         </div>
       </div>
@@ -50,9 +50,9 @@
         <span class="font-medium block mt-1 mb-2">SubCategories:</span>
         <div class="flex gap-2">
           @for (item of product.subcategory; track $index) {
-              <div  class="px-3 py-1 border rounded-md text-[12px]  text-black border-gray-400 ">
+          <div class="px-3 py-1 border rounded-md text-[12px]  text-black border-gray-400 ">
             {{ item.name }}
-            </div>
+          </div>
           }
         </div>
       </div>
@@ -60,20 +60,23 @@
       <!-- Quantity & Actions -->
       <div class="flex items-center gap-3 mb-10">
         <!-- Quantity Counter -->
-        <div class="flex items-center border rounded-sm grow-1">
-          <button (click)="decreaseQty()" class="transition duration-300 px-3 py-1 text-lg font-bold border-r w-1/3 hover:bg-red-500 hover:text-white hover:cursor-pointer">−</button>
+        <!-- <div class="flex items-center border rounded-sm grow-1">
+          <button (click)="decreaseQty()"
+            class="transition duration-300 px-3 py-1 text-lg font-bold border-r w-1/3 hover:bg-red-500 hover:text-white hover:cursor-pointer">−</button>
           <span class="text-center w-1/3">{{ quantity }}</span>
-          <button (click)="increaseQty()" class="transition duration-300 px-3 py-1 text-lg font-bold border-l w-1/3 hover:bg-red-500 hover:text-white hover:cursor-pointer">+</button>
-        </div>
+          <button (click)="increaseQty()"
+            class="transition duration-300 px-3 py-1 text-lg font-bold border-l w-1/3 hover:bg-red-500 hover:text-white hover:cursor-pointer">+</button>
+        </div> -->
 
         <!-- Buy Now -->
-        <button class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-md font-medium grow-4 transition duration-300  hover:cursor-pointer">
-          Buy Now
-        </button>
-
-        <!-- Wishlist -->
-        <button class="border rounded-md px-3 py-2 hover:bg-red-500 hover:text-white hover:cursor-pointer transition duration-300" >
-          <i class="fa-regular fa-heart text-xl "></i>
+        <button [disabled]="loading" (click)="addToCart()"
+          class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-md font-medium grow-4 transition duration-300 "
+          [class.cursor-not-allowed]="loading" [class.cursor-pointer]="!loading">
+          @if(loading){
+          <i class="fa-solid fa-spinner fa-spin text-gray-100"></i>
+          }@else {
+          <i class="fa-solid fa-cart-shopping mr-2"></i> Add to Cart
+        }
         </button>
       </div>
 
@@ -98,6 +101,6 @@
   </div>
 
   <!---Bottom Section -->
-  <app-similar-products [id]="product.category._id"/>
+  <app-similar-products [id]="product.category._id" />
 </main>
 }

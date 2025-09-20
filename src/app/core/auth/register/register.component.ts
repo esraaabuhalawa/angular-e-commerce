@@ -1,7 +1,7 @@
 import { Subscription } from 'rxjs';
 import { Component, Inject, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   private readonly router = inject(Router)
   private readonly fb = inject(FormBuilder);
   private readonly userService = inject(UserService)
-private readonly cookieService = inject(CookieService);
+  private readonly cookieService = inject(CookieService);
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object

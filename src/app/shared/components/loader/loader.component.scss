@@ -2,7 +2,7 @@
 .loader {
   width: 65px;
   aspect-ratio: 1;
-  --g: radial-gradient(farthest-side,#0000 calc(95% - 3px),#5A6D57 calc(100% - 3px) 98%,#0000 101%) no-repeat;
+  --g: radial-gradient(farthest-side,#0000 calc(95% - 3px),#f72323 calc(100% - 3px) 98%,#0000 101%) no-repeat;
   background: var(--g), var(--g), var(--g);
   background-size: 30px 30px;
   animation: l10 1.5s infinite;

@@ -70,10 +70,17 @@
           <li [class.hidden]="authPages">
             <a routerLink="/wishlist" class="hover:text-red-500"><i class="fa-regular fa-heart"></i></a>
           </li>
-          <li>
+          <!-- <li class="relative">
+            <span class="absolute top-[-7px] right-[-6px] flex justify-center items-center w-[17px] h-[17px] rounded-full bg-gray-400 text-white text-[13px]"></span>
             <a [class.hidden]="authPages" routerLink="/cart" routerLinkActive="text-red-500"
               class="hover:text-red-500"><i class="fa-solid fa-cart-shopping"></i></a>
-          </li>
+          </li> -->
+          <a routerLink="/cart" class="relative" [class.hidden]="authPages" routerLinkActive="text-gray-700">
+              <i class="fa-solid fa-cart-shopping text-[15px]"></i>
+              <span *ngIf="cartCount$ | async as count" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">
+                {{ count }}
+              </span>
+            </a>
 
           <!-- Profile Button -->
           <li *ngIf="userData$ | async as user" (click)="toggleDropdown()" class="relative cursor-pointer">

@@ -1,87 +1,133 @@
-<div class="px-6 py-10 grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+<div class="px-6 py-10 bg-gray-100 my-10  md:max-w-2xl mx-auto">
 
   <!-- Billing Details -->
   <div>
-    <h2 class="text-2xl font-bold mb-6">Billing Details</h2>
+    <!-- {{ cartId }} -->
+    <h2 class="text-2xl font-bold mb-6 text-center">Billing Details</h2>
+    <form [formGroup]="checkoutForm" class="w-full bg-white p-4 mx-auto space-y-6">
+      <div formGroupName="shippingAddress">
+        <!-- Details -->
+        <div class="relative z-0 w-full mb-5 group">
+          <textarea formControlName="details" id="details"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-red-600 peer resize-none min-h-[60px]"
+            placeholder=" "></textarea>
+          <label for="details"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-red-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            Address Details
+          </label>
+        </div>
 
-    <form class="space-y-4">
-      <input type="text" placeholder="First Name*" class="border px-4 py-2 rounded w-full" />
-      <input type="text" placeholder="Company Name" class="border px-4 py-2 rounded w-full" />
-      <input type="text" placeholder="Street Address*" class="border px-4 py-2 rounded w-full" />
-      <input type="text" placeholder="Apartment, floor, etc. (optional)" class="border px-4 py-2 rounded w-full" />
-      <input type="text" placeholder="Town/City*" class="border px-4 py-2 rounded w-full" />
-      <input type="text" placeholder="Phone Number*" class="border px-4 py-2 rounded w-full" />
-      <input type="email" placeholder="Email Address*" class="border px-4 py-2 rounded w-full" />
+        @if(checkoutForm.get('shippingAddress')?.get('details')?.errors &&
+        checkoutForm.get('shippingAddress')?.get('details')?.touched){
+        <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+          <ul class="list-disc list-inside">
+            @if(checkoutForm.get('shippingAddress')?.get('details')?.getError('required')){
+            <li>Address details are required</li>
+            } @else if(checkoutForm.get('shippingAddress')?.get('details')?.getError('minlength')){
+            <li>Address must be at least 5 characters</li>
+            }
+          </ul>
+        </div>
+        }
 
-      <label class="flex items-center gap-2">
-        <input type="checkbox" checked />
-        Save this information for faster check-out next time
-      </label>
+        <!-- Phone -->
+        <div class="relative z-0 w-full mb-5 group">
+          <input formControlName="phone" id="phone" type="tel"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-red-600 peer"
+            placeholder=" " />
+          <label for="phone"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-red-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            Phone Number
+          </label>
+        </div>
+
+        @if(checkoutForm.get('shippingAddress')?.get('phone')?.errors &&
+        checkoutForm.get('shippingAddress')?.get('phone')?.touched){
+        <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+          <ul class="list-disc list-inside">
+            @if(checkoutForm.get('shippingAddress')?.get('phone')?.getError('required')){
+            <li>Phone number is required</li>
+            } @else if(checkoutForm.get('shippingAddress')?.get('phone')?.getError('pattern')){
+            <li>Please enter a valid Egyptian phone number (e.g., 01012345678)</li>
+            }
+          </ul>
+        </div>
+        }
+
+        <!-- City -->
+        <div class="relative z-0 w-full mb-5 group">
+          <input formControlName="city" id="city" type="text"
+            class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-red-600 peer"
+            placeholder=" " />
+          <label for="city"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-red-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            City
+          </label>
+        </div>
+
+        @if(checkoutForm.get('shippingAddress')?.get('city')?.errors &&
+        checkoutForm.get('shippingAddress')?.get('city')?.touched){
+        <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+          <ul class="list-disc list-inside">
+            @if(checkoutForm.get('shippingAddress')?.get('city')?.getError('required')){
+            <li>City is required</li>
+            }
+          </ul>
+        </div>
+        }
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-between items-center">
+        <!-- Pay Cash Button -->
+        <button type="button" (click)="submitForm('cash')" [disabled]="cashDone"
+          class="relative border hover:cursor-pointer hover:bg-transparent hover:border-red-700 hover:text-red-700  text-white bg-red-700 transition duration-300 mt-10 block w-full sm:w-auto px-5 py-2.5 text-center font-medium rounded-lg text-sm  focus:ring-4 focus:outline-none focus:ring-red-300 disabled:opacity-50 disabled:cursor-not-allowed capitalize">
+          @if(cashDone){
+          <div role="status">
+            <svg aria-hidden="true" class="inline w-8 h-8 text-gray-200 animate-spin fill-red-600" viewBox="0 0 100 101"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M100 50.59C100 78.21 77.61 100.59 50 100.59C22.38 100.59 0 78.21 0 50.59C0 22.98 22.38 0.59 50 0.59C77.61 0.59 100 22.98 100 50.59Z"
+                fill="currentColor" />
+              <path
+                d="M93.97 39.04C96.39 38.40 97.86 35.91 97.00 33.55C95.29 28.82 92.87 24.37 89.82 20.35C85.85 15.12 80.88 10.72 75.21 7.41C69.54 4.10 63.27 1.94 56.77 1.05C51.76 0.37 46.69 0.44 41.73 1.28C39.26 1.69 37.81 4.19 38.45 6.62C39.08 9.04 41.56 10.47 44.05 10.10C47.85 9.54 51.71 9.52 55.54 10.04C60.86 10.77 65.99 12.54 70.63 15.25C75.27 17.96 79.33 21.56 82.58 25.84C84.91 28.91 86.80 32.29 88.18 35.87C89.08 38.21 91.54 39.67 93.97 39.04Z"
+                fill="currentFill" />
+            </svg>
+            <span class="sr-only">Loading...</span>
+          </div>
+          } @else {
+          Pay Cash
+          }
+        </button>
+
+        <!-- Pay with Visa Button -->
+        <button type="button" (click)="submitForm('visa')" [disabled]="visaDone"
+          class="relative  bg-transparent hover:cursor-pointer border border-red-500 text-red-500 transition duration-300
+          mt-10 block w-full sm:w-auto px-5 py-2.5 text-center font-medium rounded-lg text-sm hover:text-white hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 disabled:opacity-50 disabled:cursor-not-allowed capitalize">
+          @if(visaDone){
+          <div role="status">
+            <svg aria-hidden="true" class="inline w-8 h-8 text-gray-200 animate-spin fill-red-600" viewBox="0 0 100 101"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M100 50.59C100 78.21 77.61 100.59 50 100.59C22.38 100.59 0 78.21 0 50.59C0 22.98 22.38 0.59 50 0.59C77.61 0.59 100 22.98 100 50.59Z"
+                fill="currentColor" />
+              <path
+                d="M93.97 39.04C96.39 38.40 97.86 35.91 97.00 33.55C95.29 28.82 92.87 24.37 89.82 20.35C85.85 15.12 80.88 10.72 75.21 7.41C69.54 4.10 63.27 1.94 56.77 1.05C51.76 0.37 46.69 0.44 41.73 1.28C39.26 1.69 37.81 4.19 38.45 6.62C39.08 9.04 41.56 10.47 44.05 10.10C47.85 9.54 51.71 9.52 55.54 10.04C60.86 10.77 65.99 12.54 70.63 15.25C75.27 17.96 79.33 21.56 82.58 25.84C84.91 28.91 86.80 32.29 88.18 35.87C89.08 38.21 91.54 39.67 93.97 39.04Z"
+                fill="currentFill" />
+            </svg>
+            <span class="sr-only">Loading...</span>
+          </div>
+          } @else {
+          Pay with Visa
+          }
+        </button>
+      </div>
+
+      @if(errorMsg){
+      <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+        <p>{{ errorMsg }}</p>
+      </div>
+      }
     </form>
   </div>
 
-  <!-- Order Summary -->
-  <div>
-    <!-- Cart Items -->
-    <div class="flex justify-between items-center border-b py-2">
-      <div class="flex items-center gap-3">
-        <img src="assets/images/lcd-monitor.png" alt="LCD Monitor" class="w-12 h-12 object-contain" />
-        <span>LCD Monitor</span>
-      </div>
-      <span>$650</span>
-    </div>
-
-    <div class="flex justify-between items-center border-b py-2">
-      <div class="flex items-center gap-3">
-        <img src="assets/images/gamepad.png" alt="H1 Gamepad" class="w-12 h-12 object-contain" />
-        <span>H1 Gamepad</span>
-      </div>
-      <span>$1100</span>
-    </div>
-
-    <!-- Totals -->
-    <div class="flex justify-between py-2">
-      <span>Subtotal:</span>
-      <span>$1750</span>
-    </div>
-    <div class="flex justify-between py-2">
-      <span>Shipping:</span>
-      <span>Free</span>
-    </div>
-    <div class="flex justify-between font-bold text-lg py-2 border-t">
-      <span>Total:</span>
-      <span>$1750</span>
-    </div>
-
-    <!-- Payment Methods -->
-    <div class="mt-4">
-      <label class="flex items-center gap-2">
-        <input type="radio" name="payment" value="bank" />
-        Bank
-        <img src="assets/images/payment-methods.png" alt="Payment Options" class="h-5 ml-2" />
-      </label>
-
-      <label class="flex items-center gap-2 mt-2">
-        <input type="radio" name="payment" value="cash" checked />
-        Cash on delivery
-      </label>
-    </div>
-
-    <!-- Coupon -->
-    <div class="flex mt-4 gap-2">
-      <input
-        type="text"
-        placeholder="Coupon Code"
-        class="border px-4 py-2 rounded w-full"
-      />
-      <button type="button" class="bg-red-500 text-white px-6 py-2 rounded">
-        Apply Coupon
-      </button>
-    </div>
-
-    <!-- Place Order -->
-    <button class="bg-red-500 text-white w-full py-3 rounded mt-4">
-      Place Order
-    </button>
-  </div>
 </div>
