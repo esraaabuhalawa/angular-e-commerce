@@ -53,14 +53,14 @@ export class PopularCategoriesComponent implements OnInit, OnDestroy {
     pullDrag: true,
     dots: false,
     margin: 20,                      // 👈 margin between items
-    navSpeed: 700,
+    navSpeed: 900,
     navText: ['<i class="fa-solid fa-arrow-left"></i>', '<i class="fa-solid fa-arrow-right"></i>'],             // 👈 custom arrows
     responsive: {
       0: {
         items: 1
       },
       400: {
-        items: 2
+        items: 1
       },
       740: {
         items: 3

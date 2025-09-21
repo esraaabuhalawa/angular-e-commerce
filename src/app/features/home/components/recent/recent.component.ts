@@ -45,13 +45,15 @@ export class RecentComponent implements OnInit {
     dots: false,
     margin: 20,                      // 👈 margin between items
     navSpeed: 700,
-    navText: ['<i class="fa-solid fa-arrow-left"></i>', '<i class="fa-solid fa-arrow-right"></i>'], 
+    navText: ['<i class="fa-solid fa-arrow-left"></i>', '<i class="fa-solid fa-arrow-right"></i>'],
     responsive: {
       0: {
-        items: 1
+        items: 1,
+         center: true
       },
       400: {
-        items: 2
+        items: 1,
+         center: true  
       },
       740: {
         items: 3
