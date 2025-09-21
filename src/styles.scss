@@ -124,8 +124,9 @@ swiper-container::part(bullet-active) {
     line-height: 20px;
     color: var(--color-secondary);
     position: relative;
+
     &::before {
-      content:'';
+      content: '';
       position: absolute;
       display: block;
       width: 20px;
@@ -144,5 +145,25 @@ swiper-container::part(bullet-active) {
     color: #000;
     line-height: 48px;
     letter-spacing: 4%;
+  }
+}
+
+
+@media screen and (max-width:500px) {
+  .section-header {
+    margin-left: 10px;
+
+    p {
+      font-size: 1rem;
+      padding-left: 21px;
+
+      &::before {
+        width: 14px;
+      }
+    }
+
+    h2 {
+      font-size: 1.4rem;
+    }
   }
 }
