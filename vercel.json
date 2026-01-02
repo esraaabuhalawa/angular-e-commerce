@@ -1,11 +1,14 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist/E-commerce-project/browser",
-  "installCommand": "npm install",
   "framework": null,
-  "functions": {
-    "api/index.js": {
-      "runtime": "nodejs20.x"
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
-  }
+  ]
 }
