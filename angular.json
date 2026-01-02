@@ -42,13 +42,6 @@
               "./node_modules/swiper/swiper-bundle.css",
               "src/styles.scss"
             ],
-            "scripts": { 
-              "dev": "ng serve",
-              "build": "ng build --configuration production",
-              "build:ssr": "ng build",
-              "serve:ssr": "node dist/E-commerce-project/server/server.mjs",
-              "prerender": "ng build && node dist/E-commerce-project/server/prerender.mjs"
-            },
             "server": "src/main.server.ts",
             "ssr": {
               "entry": "src/server.ts"
