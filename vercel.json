@@ -1,6 +1,7 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build -- --configuration=production",
   "outputDirectory": "dist/E-commerce-project/browser",
+  "installCommand": "npm install --legacy-peer-deps",
   "framework": null,
   "routes": [
     {
