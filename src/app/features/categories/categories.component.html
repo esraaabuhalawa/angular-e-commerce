@@ -1,14 +1,10 @@
 @if(isLoading){
-  <app-loader />
+<app-loader />
 }@else {
 
 <!-- Header Banner -->
 <header class="relative w-full h-64 md:h-80 mb-10">
-  <img
-    src="/images/dr5.jpg"
-    alt="Categories Banner"
-    class="w-full h-full object-cover"
-  />
+  <img src="/images/dr5.webp" alt="Categories Banner" class="w-full h-full object-cover" />
   <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
     <h1 class="text-white text-3xl md:text-5xl font-bold">Browse By Category</h1>
   </div>
@@ -17,11 +13,8 @@
 <div class="px-6 py-10">
   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
     @for (category of categories; track $index) {
-      <div
-      class="p-4 bg-white shadow-md rounded-lg cursor-pointer hover:shadow-lg transition"
-      [routerLink]="['/products']"
-      [queryParams]="{ category: category._id }"
-    >
+    <div class="p-4 bg-white shadow-md rounded-lg cursor-pointer hover:shadow-lg transition"
+      [routerLink]="['/products']" [queryParams]="{ category: category._id }">
       <img [src]="category.image" alt="{{ category.name }}" class="w-full h-40 object-contain rounded-md mb-3" />
       <h3 class="text-center font-medium capitalize">{{ category.name }}</h3>
     </div>

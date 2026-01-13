@@ -8,7 +8,7 @@
   @if(cartItems.length === 0){
   <!-- Empty Cart -->
   <div class="text-center py-16">
-    <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Empty Cart"
+    <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.webp" alt="Empty Cart"
       class="w-32 h-32 mx-auto mb-6 opacity-70" />
     <h2 class="text-2xl font-semibold mb-2">Your Cart is Empty 🛒</h2>
     <p class="text-gray-500 mb-10">Looks like you haven’t added any items yet.</p>
@@ -66,7 +66,8 @@
                       </div>
 
                       <!-- Remove Button -->
-                      <button (click)="removeProduct(product.product._id)" class="flex items-center text-red-500 hover:text-red-700 font-medium gap-1 transition hover:cursor-pointer">
+                      <button (click)="removeProduct(product.product._id)"
+                        class="flex items-center text-red-500 hover:text-red-700 font-medium gap-1 transition hover:cursor-pointer">
                         <i class="fa-solid fa-trash-can"></i>
                       </button>
                     </div>
@@ -86,9 +87,12 @@
       <!-- Cart Actions -->
       <div class="flex justify-between mt-6">
         <button routerLink="/products"
-          class="bg-red-500 text-white px-3  rounded shadow hover:bg-red-600 transition border py-2 hover:cursor-pointer">Return To Shop</button>
-           <button (click)="emptyCart()" class="border px-6 py-2 rounded hover:border-red-600 hover:bg-red-600 transition hover:cursor-pointer hover:text-white ">Empty Cart</button>
-        </div>
+          class="bg-red-500 text-white px-3  rounded shadow hover:bg-red-600 transition border py-2 hover:cursor-pointer">Return
+          To Shop</button>
+        <button (click)="emptyCart()"
+          class="border px-6 py-2 rounded hover:border-red-600 hover:bg-red-600 transition hover:cursor-pointer hover:text-white ">Empty
+          Cart</button>
+      </div>
     </div>
 
     <!-- Cart Total -->
@@ -107,7 +111,8 @@
           <span>Total:</span>
           <span>{{ total | currency:'EGP' }}</span>
         </div>
-        <button [routerLink]="['/checkout/' , cartId ]" class="bg-red-500 text-white w-full py-3 rounded hover:bg-red-600 transition border py-2 hover:cursor-pointer">
+        <button [routerLink]="['/checkout/' , cartId ]"
+          class="bg-red-500 text-white w-full py-3 rounded hover:bg-red-600 transition border py-2 hover:cursor-pointer">
           Proceed to checkout
         </button>
       </div>
