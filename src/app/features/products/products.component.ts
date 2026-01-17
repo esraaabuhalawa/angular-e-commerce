@@ -70,6 +70,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.currentPage = page;
     this.fetchProducts({}, page); // pass the new page number
   }
+  
   fetchCategories() {
     this.categorySub = this.categoryService.getAllCategories().subscribe({
       next: (res) => {
