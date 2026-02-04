@@ -3,9 +3,10 @@ import { CategoriesService } from '../../../../core/services/categories/categori
 import { Subscription } from 'rxjs';
 import { Category } from '../../../../core/models/category.interface';
 import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-featured-brands',
-  imports: [ RouterLink],
+  imports: [ RouterLink, TranslateModule],
   templateUrl: './featured-brands.component.html',
   styleUrl: './featured-brands.component.scss'
 })
@@ -15,7 +16,6 @@ export class FeaturedBrandsComponent implements OnInit, OnDestroy {
   categorySub: Subscription | null = null;
 
   private readonly categoryService = inject(CategoriesService);
-
 
   fetchCategories() {
     this.categorySub = this.categoryService.getAllCategories().subscribe({

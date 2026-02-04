@@ -5,10 +5,11 @@ import { Subscription } from 'rxjs';
 import { CartService } from '../cart/services/cart.service';
 import { isPlatformBrowser } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-checkout',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslateModule],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss'
 })

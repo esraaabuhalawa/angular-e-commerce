@@ -1,6 +1,6 @@
 <section class="py-12  container mt-14">
   <header class="mb-7  section-header ">
-    <p>Related Items</p>
+    <p>{{ 'RELATED_ITEMS' | translate}}</p>
   </header>
   <owl-carousel-o [options]="customOptions">
     @for (product of productsList; track product.id) {

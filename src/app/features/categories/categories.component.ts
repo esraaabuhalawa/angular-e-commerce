@@ -4,9 +4,10 @@ import { CategoriesService } from '../../core/services/categories/categories.ser
 import { Subscription } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { LoaderComponent } from "../../shared/components/loader/loader.component";
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-categories',
-  imports: [RouterLink, LoaderComponent],
+  imports: [RouterLink, LoaderComponent,TranslateModule],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
 })

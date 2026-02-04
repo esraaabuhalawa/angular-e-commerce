@@ -1,9 +1,8 @@
 <div class="px-6 py-10 bg-gray-100 my-10  md:max-w-2xl mx-auto">
-
   <!-- Billing Details -->
   <div>
     <!-- {{ cartId }} -->
-    <h2 class="text-2xl font-bold mb-6 text-center">Billing Details</h2>
+    <h2 class="text-2xl font-bold mb-6 text-center">{{'CHECKOUT.BILLING_DETAILS' | translate }}</h2>
     <form [formGroup]="checkoutForm" class="w-full bg-white p-4 mx-auto space-y-6">
       <div formGroupName="shippingAddress">
         <!-- Details -->
@@ -13,7 +12,7 @@
             placeholder=" "></textarea>
           <label for="details"
             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-red-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-            Address Details
+            {{'CHECKOUT.SHIPPING_ADDRESS.DETAILS_LABEL' | translate }}
           </label>
         </div>
 
@@ -22,9 +21,9 @@
         <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
           <ul class="list-disc list-inside">
             @if(checkoutForm.get('shippingAddress')?.get('details')?.getError('required')){
-            <li>Address details are required</li>
+             <li>{{ 'CHECKOUT.SHIPPING_ADDRESS.DETAILS_ERRORS.REQUIRED' | translate }}</li>
             } @else if(checkoutForm.get('shippingAddress')?.get('details')?.getError('minlength')){
-            <li>Address must be at least 5 characters</li>
+             <li>{{ 'CHECKOUT.SHIPPING_ADDRESS.DETAILS_ERRORS.MIN_LENGTH' | translate }}</li>
             }
           </ul>
         </div>
@@ -37,7 +36,7 @@
             placeholder=" " />
           <label for="phone"
             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-red-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-            Phone Number
+            {{ 'CHECKOUT.SHIPPING_ADDRESS.PHONE_LABEL' | translate }}
           </label>
         </div>
 
@@ -46,9 +45,9 @@
         <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
           <ul class="list-disc list-inside">
             @if(checkoutForm.get('shippingAddress')?.get('phone')?.getError('required')){
-            <li>Phone number is required</li>
+            <li>{{ 'CHECKOUT.SHIPPING_ADDRESS.PHONE_ERRORS.REQUIRED' | translate }}</li>
             } @else if(checkoutForm.get('shippingAddress')?.get('phone')?.getError('pattern')){
-            <li>Please enter a valid Egyptian phone number (e.g., 01012345678)</li>
+            <li>{{ 'CHECKOUT.SHIPPING_ADDRESS.PHONE_ERRORS.INVALID' | translate }}</li>
             }
           </ul>
         </div>
@@ -61,7 +60,7 @@
             placeholder=" " />
           <label for="city"
             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-red-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-            City
+            {{ 'CHECKOUT.SHIPPING_ADDRESS.CITY_LABEL' | translate }}
           </label>
         </div>
 
@@ -70,7 +69,7 @@
         <div class="flex py-3 px-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
           <ul class="list-disc list-inside">
             @if(checkoutForm.get('shippingAddress')?.get('city')?.getError('required')){
-            <li>City is required</li>
+            <li>{{ 'CHECKOUT.SHIPPING_ADDRESS.CITY_ERRORS.REQUIRED' | translate }}</li>
             }
           </ul>
         </div>
@@ -92,10 +91,10 @@
                 d="M93.97 39.04C96.39 38.40 97.86 35.91 97.00 33.55C95.29 28.82 92.87 24.37 89.82 20.35C85.85 15.12 80.88 10.72 75.21 7.41C69.54 4.10 63.27 1.94 56.77 1.05C51.76 0.37 46.69 0.44 41.73 1.28C39.26 1.69 37.81 4.19 38.45 6.62C39.08 9.04 41.56 10.47 44.05 10.10C47.85 9.54 51.71 9.52 55.54 10.04C60.86 10.77 65.99 12.54 70.63 15.25C75.27 17.96 79.33 21.56 82.58 25.84C84.91 28.91 86.80 32.29 88.18 35.87C89.08 38.21 91.54 39.67 93.97 39.04Z"
                 fill="currentFill" />
             </svg>
-            <span class="sr-only">Loading...</span>
+            <span class="sr-only">{{ 'CHECKOUT.LOADING' | translate }}</span>
           </div>
           } @else {
-          Pay Cash
+         {{ 'CHECKOUT.PAYMENT.CASH' | translate }}
           }
         </button>
 
@@ -114,10 +113,10 @@
                 d="M93.97 39.04C96.39 38.40 97.86 35.91 97.00 33.55C95.29 28.82 92.87 24.37 89.82 20.35C85.85 15.12 80.88 10.72 75.21 7.41C69.54 4.10 63.27 1.94 56.77 1.05C51.76 0.37 46.69 0.44 41.73 1.28C39.26 1.69 37.81 4.19 38.45 6.62C39.08 9.04 41.56 10.47 44.05 10.10C47.85 9.54 51.71 9.52 55.54 10.04C60.86 10.77 65.99 12.54 70.63 15.25C75.27 17.96 79.33 21.56 82.58 25.84C84.91 28.91 86.80 32.29 88.18 35.87C89.08 38.21 91.54 39.67 93.97 39.04Z"
                 fill="currentFill" />
             </svg>
-            <span class="sr-only">Loading...</span>
+            <span class="sr-only">{{ 'CHECKOUT.LOADING' | translate }}</span>
           </div>
           } @else {
-          Pay with Visa
+         {{ 'CHECKOUT.PAYMENT.VISA' | translate }}
           }
         </button>
       </div>

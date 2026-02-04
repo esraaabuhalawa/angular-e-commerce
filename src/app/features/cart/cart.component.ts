@@ -7,10 +7,11 @@ import { CurrencyPipe } from '@angular/common';
 import { Cart } from './interface/cart.interface';
 import { LoaderComponent } from "../../shared/components/loader/loader.component";
 import { ToastrService } from 'ngx-toastr';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart',
-  imports: [RouterLink, FormsModule, CurrencyPipe, LoaderComponent],
+  imports: [RouterLink, FormsModule, CurrencyPipe, LoaderComponent,TranslateModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })

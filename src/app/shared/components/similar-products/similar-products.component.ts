@@ -5,9 +5,10 @@ import { Subscription } from 'rxjs';
 import { ProductCardComponent } from "../product-card/product-card.component";
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-similar-products',
-  imports: [ProductCardComponent,CarouselModule],
+  imports: [ProductCardComponent,CarouselModule,TranslateModule],
   templateUrl: './similar-products.component.html',
   styleUrl: './similar-products.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

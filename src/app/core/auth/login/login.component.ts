@@ -7,24 +7,24 @@ import { Inject, PLATFORM_ID } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Subscription } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterLink, ɵInternalFormsSharedModule, ReactiveFormsModule],
+  imports: [RouterLink, ɵInternalFormsSharedModule, ReactiveFormsModule,TranslateModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
   errorMsg: string = '';
   loginsub: Subscription = new Subscription();
-
   private readonly platformId = inject(PLATFORM_ID)
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router)
   private readonly userService = inject(UserService);
   private readonly fb = inject(FormBuilder);
   private readonly cookieService = inject(CookieService);
-
+  
   showPassword: boolean = false;
   togglePassword() {
     this.showPassword = !this.showPassword;

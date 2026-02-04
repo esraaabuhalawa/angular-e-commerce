@@ -12,10 +12,11 @@ import { BrandsService } from '../../core/services/brands/brands.service';
 import { Brand } from '../../core/models/brand.interface';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-products',
-  imports: [ProductCardComponent, LoaderComponent, NgxPaginationModule, FormsModule],
+  imports: [ProductCardComponent, LoaderComponent, NgxPaginationModule, FormsModule ,TranslateModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -70,7 +71,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.currentPage = page;
     this.fetchProducts({}, page); // pass the new page number
   }
-  
+
   fetchCategories() {
     this.categorySub = this.categoryService.getAllCategories().subscribe({
       next: (res) => {

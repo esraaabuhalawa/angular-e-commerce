@@ -8,10 +8,11 @@ import { StarRatingComponent } from "../../shared/components/star-rating/star-ra
 import { SimilarProductsComponent } from "../../shared/components/similar-products/similar-products.component";
 import { CartService } from '../cart/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-details',
-  imports: [LoaderComponent, StarRatingComponent, SimilarProductsComponent],
+  imports: [LoaderComponent, StarRatingComponent, SimilarProductsComponent,TranslateModule],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })

@@ -6,10 +6,11 @@ import { WishlistService } from '../../../features/wishlist/services/wishlist.se
 import { ToastrService } from 'ngx-toastr';
 import { CurrencyPipe } from '@angular/common';
 import { CartService } from '../../../features/cart/services/cart.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-card',
-  imports: [RouterLink, StarRatingComponent, CurrencyPipe],
+  imports: [RouterLink, StarRatingComponent, CurrencyPipe,TranslateModule],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss'
 })
