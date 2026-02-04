@@ -48,7 +48,7 @@ export class SimilarProductsComponent implements OnInit {
     touchDrag: true,
     pullDrag: true,
     dots: false,
-    margin: 20,                      // 👈 margin between items
+    margin: 25,                      // 👈 margin between items
     navSpeed: 700,
     responsive: {
       0: {

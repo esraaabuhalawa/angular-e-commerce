@@ -14,6 +14,19 @@ export class CartService {
   private cartCountSubject = new BehaviorSubject<number>(0);
   cartCount$ = this.cartCountSubject.asObservable();
 
+    //load cart count
+  loadCartCount(): void {
+    this.http.get<any>(this.apiUrl).subscribe({
+      next: (res) => {
+        this.setCartCount(res.numOfCartItems ?? (res.data?.length || 0));
+      },
+      error: (err) => {
+        console.error('Failed to load cart count', err);
+        this.setCartCount(0);
+      }
+    });
+  }
+
   // Update product quantity
   updateProductQuantity(productId: string, payload: object): Observable<any> {
     return this.http.put(`${this.apiUrl}/${productId}`, payload);
@@ -35,6 +48,16 @@ export class CartService {
         this.setCartCount(res.numOfCartItems ?? 0);
       })
     );
+  }
+
+    // get current count synchronously
+  getCartCount(): number {
+    return this.cartCountSubject.value;
+  }
+
+  // clear cart count (useful for logout)
+  clearCartCount(): void {
+    this.cartCountSubject.next(0);
   }
 
   //clear cart

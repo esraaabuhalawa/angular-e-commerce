@@ -11,7 +11,7 @@ import { CategoriesService } from '../../core/services/categories/categories.ser
 import { BrandsService } from '../../core/services/brands/brands.service';
 import { Brand } from '../../core/models/brand.interface';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -36,6 +36,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
   currentPage!: number;
   pageSize!: number;
   total!: number;
+  searchKeyword = '';
+
 
   isLoading: boolean = false
 
@@ -43,6 +45,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   private readonly categoryService = inject(CategoriesService);
   private readonly brandsService = inject(BrandsService);
   private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
 
   fetchProducts(filters?: any, page: number = 1) {
     this.isLoading = true;
@@ -67,7 +70,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   pageChanged(page: number) {
-    console.log(page)
+    // console.log(page)
     this.currentPage = page;
     this.fetchProducts({}, page); // pass the new page number
   }
@@ -121,6 +124,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
       filters['sort'] = this.searchProducts;
     }
 
+     if (this.searchKeyword) {
+      filters['keyword'] = this.searchKeyword;
+    }
+
     this.fetchProducts(filters)
   }
 
@@ -130,15 +137,31 @@ export class ProductsComponent implements OnInit, OnDestroy {
     if (keyword) {
       filters['keyword'] = keyword;
     }
-
     this.fetchProducts(filters)
   }
 
+
+  //   searchProducts(event: Event) {
+  //   const keyword = (event.target as HTMLInputElement).value;
+
+  //   // ✅ Update query params to include keyword
+  //   this.router.navigate(['/products'], {
+  //     queryParams: {
+  //       ...this.route.snapshot.queryParams, // Keep existing params
+  //       keyword: keyword || null // Remove keyword if empty
+  //     },
+  //     queryParamsHandling: 'merge' // Merge with existing params
+  //   });
+
+
+  // }
+
   ngOnInit(): void {
-      this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe(params => {
     // Reset filters
     this.selectedCategory = '';
     this.selectedBrand ='';
+    this.searchKeyword = '';
 
     // Check for category query param
     if (params['category']) {
@@ -149,6 +172,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
     if (params['brand']) {
       this.selectedBrand = params['brand'];
     }
+
+     if (params['keyword']) {
+        this.searchKeyword = params['keyword'];
+      }
 
     // Apply filters if either category or brand exists
     if (this.selectedCategory || this.selectedBrand) {

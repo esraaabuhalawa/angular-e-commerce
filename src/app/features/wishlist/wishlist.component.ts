@@ -22,9 +22,9 @@ export class WishlistComponent implements OnInit, OnDestroy {
   readonly isLoading$ = this.wishlistService.isLoading$;
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.wishlistService.loadWishlist();
-    }
+    // if (isPlatformBrowser(this.platformId)) {
+    //   this.wishlistService.loadWishlist();
+    // }
   }
   ngOnDestroy(): void {
   }
