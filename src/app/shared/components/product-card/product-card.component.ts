@@ -24,9 +24,9 @@ export class ProductCardComponent {
   wishlistLoading: { [id: string]: boolean } = {};
   loading: boolean = false;
 
-  constructor() {
-    this.wishlistService.loadWishlist();
-  }
+  // constructor() {
+  //   this.wishlistService.loadWishlist();
+  // }
 
   // Remove redHeart property and use this method instead
   isInWishlist(): boolean {
