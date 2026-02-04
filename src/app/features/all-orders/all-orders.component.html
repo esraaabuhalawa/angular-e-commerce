@@ -1,5 +1,5 @@
 <div class="container mx-auto p-6">
-  <h1 class="text-3xl font-bold mb-8 text-gray-800">All Orders</h1>
+  <h1 class="text-3xl font-bold mb-8 text-gray-800">{{ 'ORDERS.ALL_ORDERS_TITLE' | translate }}</h1>
 
   @if(orders.length > 0){
   <div class="space-y-8">
@@ -9,8 +9,8 @@
       <!-- Order Header -->
       <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-6 border-b pb-4">
         <div>
-          <h2 class="text-xl font-bold text-gray-800">Order #{{ order.id }}</h2>
-          <p class="text-gray-500 text-sm">Created: {{ order.createdAt | date:'medium' }}</p>
+          <h2 class="text-xl font-bold text-gray-800"> {{ 'ORDERS.ORDER_NUMBER' | translate:{ id: order.id } }}</h2>
+          <p class="text-gray-500 text-sm">{{ 'ORDERS.CREATED_AT' | translate}} {{ order.createdAt | date:'medium' }}</p>
         </div>
         <span class="px-4 py-1.5 rounded-full text-sm font-semibold shadow-sm"
           [ngClass]="order.isDelivered ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'">
@@ -25,7 +25,7 @@
         <div class="space-y-6">
           <!-- Customer Info -->
           <div>
-            <h3 class="font-semibold text-gray-700 mb-1">👤 Customer</h3>
+            <h3 class="font-semibold text-gray-700 mb-1">{{ 'ORDERS.CUSTOMER' | translate }}</h3>
             <p class="text-gray-800">{{ order.user.name }}
               (<span class="text-blue-600">{{ order.user.email }}</span>)
             </p>
@@ -34,7 +34,7 @@
 
           <!-- Shipping Address -->
           <div>
-            <h3 class="font-semibold text-gray-700 mb-1">📍 Shipping Address</h3>
+            <h3 class="font-semibold text-gray-700 mb-1">{{ 'ORDERS.SHIPPING_ADDRESS' | translate }}</h3>
             <p class="text-gray-800">{{ order.shippingAddress.details }}, {{ order.shippingAddress.city }}</p>
             <p class="text-gray-600 text-sm">📞 {{ order.shippingAddress.phone }}</p>
           </div>
@@ -44,19 +44,19 @@
         <div class="space-y-6">
           <!-- Payment Info -->
           <div class="grid sm:grid-cols-3 gap-4 bg-gray-50 p-4 rounded-lg">
-            <p class="text-gray-700">💳 Payment: <span class="font-semibold">{{ order.paymentMethodType }}</span></p>
-            <p class="text-gray-700">💰 Status:
+            <p class="text-gray-700"> {{ 'ORDERS.PAYMENT_METHOD' | translate }}:  <span class="font-semibold">{{ order.paymentMethodType }}</span></p>
+            <p class="text-gray-700"> {{ 'ORDERS.STATUS' | translate }}:
               <span [ngClass]="order.isPaid ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'">
-                {{ order.isPaid ? 'Paid' : 'Not Paid' }}
+                {{ order.isPaid ? ('ORDERS.PAID' | translate) : ('ORDERS.NOT_PAID' | translate) }}
               </span>
             </p>
-            <p class="text-gray-700">🛒 Total: <span class="font-bold text-gray-900">${{ order.totalOrderPrice }}</span>
+            <p class="text-gray-700">{{ 'ORDERS.TOTAL' | translate }}: <span class="font-bold text-gray-900">${{ order.totalOrderPrice }}</span>
             </p>
           </div>
 
           <!-- Cart Items -->
           <div>
-            <h3 class="font-semibold text-gray-700 mb-3">🛍 Cart Items</h3>
+            <h3 class="font-semibold text-gray-700 mb-3"> {{ 'ORDERS.CART_ITEMS' | translate }}</h3>
             <div class="divide-y">
               @for(item of order.cartItems; track $index){
               <div class="flex items-center py-3">
@@ -65,7 +65,7 @@
                 <div class="flex-1">
                   <p class="font-semibold text-gray-800">{{ item.product.title }}</p>
                   <p class="text-sm text-gray-500">{{ item.product.brand.name }} • {{ item.product.category.name }}</p>
-                  <p class="text-sm text-gray-600">Qty: {{ item.count }}</p>
+                  <p class="text-sm text-gray-600">{{ 'ORDERS.QUANTITY' | translate }}: {{ item.count }}</p>
                 </div>
                 <div class="font-semibold text-gray-900">${{ item.price }}</div>
               </div>
@@ -85,7 +85,7 @@
         stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18M9 3v18m6-18v18M5 21h14" />
       </svg>
-      <p class="text-gray-500 text-lg">No orders found.</p>
+      <p class="text-gray-500 text-lg">{{ 'ORDERS.NO_ORDERS' | translate }}</p>
     </div>
   </ng-template>
   }

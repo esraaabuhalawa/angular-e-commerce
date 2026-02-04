@@ -30,12 +30,13 @@
         <h1 class="text-2xl primary-font font-[600] text-black">{{ product.title }}</h1>
         <div class="flex items-center mt-3">
           <app-star-rating [rating]="product.ratingsAverage" [maxRating]="5" [readonlyCase]="true"></app-star-rating>
-          <span class="text-[var(--text-muted)] ml-2 me-3">( {{ product.ratingsQuantity}} Reviews)</span>
+          <span class="text-[var(--text-muted)] ml-2 me-3">( {{ product.ratingsQuantity}} {{ 'PRODUCT.REVIEWS' |
+            translate }})</span>
           <span> | </span>
           @if(product.quantity !== 0) {
-          <span class="text-green-400 ml-4"> In Stock </span>
+          <span class="text-green-400 ml-4"> {{ 'PRODUCT.IN_STOCK' | translate }} </span>
           }@else{
-          <span class="text-red-400 ml-4"> Sold Out </span>
+          <span class="text-red-400 ml-4"> {{ 'PRODUCT.SOLD_OUT' | translate }} </span>
           }
         </div>
       </div>
@@ -47,7 +48,7 @@
 
       <!-- Size Selector -->
       <div class="mb-7">
-        <span class="font-medium block mt-1 mb-2">SubCategories:</span>
+        <span class="font-medium block mt-1 mb-2"> {{ 'PRODUCT.SUBCATEGORIES' | translate }}:</span>
         <div class="flex gap-2">
           @for (item of product.subcategory; track $index) {
           <div class="px-3 py-1 border rounded-md text-[12px]  text-black border-gray-400 ">
@@ -75,8 +76,8 @@
           @if(loading){
           <i class="fa-solid fa-spinner fa-spin text-gray-100"></i>
           }@else {
-          <i class="fa-solid fa-cart-shopping mr-2"></i> Add to Cart
-        }
+          <i class="fa-solid fa-cart-shopping mr-2"></i> <span>{{ 'PRODUCT.ADD_TO_CART' | translate }}</span>
+          }
         </button>
       </div>
 
@@ -85,15 +86,15 @@
         <div class="p-4 border-b border-[var(--border-color)] flex items-center">
           <i class="fa-regular fa-truck mr-4"></i>
           <div>
-            <p class="font-medium text-[var(--text-color)]">Free Delivery</p>
-            <p class="text-sm text-[var(--text-muted)]">Enter your postal code for Delivery Availability</p>
+            <p class="font-medium text-[var(--text-color)]"> {{ 'DELIVERY.FREE_DELIVERY' | translate }}</p>
+            <p class="text-sm text-[var(--text-muted)]"> {{ 'DELIVERY.POSTAL_CODE_HINT' | translate }}</p>
           </div>
         </div>
         <div class="p-4 flex items-center">
           <i class="fa-solid fa-repeat mr-4"></i>
           <div>
-            <p class="font-medium text-[var(--text-color)]">Return Delivery</p>
-            <p class="text-sm text-[var(--text-muted)]">Free 30 Days Delivery Returns. Details</p>
+            <p class="font-medium text-[var(--text-color)]"> {{ 'DELIVERY.RETURN_DELIVERY' | translate }}</p>
+            <p class="text-sm text-[var(--text-muted)]"> {{ 'DELIVERY.RETURN_POLICY' | translate }} </p>
           </div>
         </div>
       </div>

@@ -1,0 +1,231 @@
+{
+  "AUTH": {
+    "SIGN_UP": "Sign Up",
+    "LOGOUT": "Logout",
+    "REGISTER_TITLE": "Create an account",
+    "REGISTER_SUBTITLE": "Enter your details below",
+    "LOGIN_TITLE": "Log in to Exclusive",
+    "LOGIN_SUBTITLE": "Enter your details below",
+    "EMAIL_LABEL": "Email address",
+    "PASSWORD_LABEL": "Password",
+    "HAVE_ACCOUNT": "Already have an account?",
+    "LOGIN_ACTION": "Log in",
+    "LABELS": {
+      "NAME": "Name",
+      "CONFIRM_PASSWORD": "Confirm password",
+      "PHONE": "Phone number (123-456-7890)"
+    },
+    "ERRORS": {
+      "REQUIRED": "This field is required",
+      "INVALID_EMAIL": "Please enter a valid email address",
+      "PASSWORD_RULES": "The password must be at least 6 characters and contain at least one uppercase letter",
+      "PASSWORD_MISMATCH": "Passwords do not match",
+      "INVALID_PHONE": "Please enter a valid phone number",
+      "MAX_LENGTH": "Should be less than 20 characters",
+      "MIN_LENGTH": "Should be more than 3 characters"
+    },
+    "ACTIONS": {
+      "SUBMIT": "Submit",
+      "LOADING": "Loading...",
+      "FORGOT_PASSWORD": "Forgot password?"
+    }
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© Copyright Rimel 2022. All rights reserved",
+    "EXCLUSIVE": {
+      "TITLE": "Exclusive",
+      "SUBSCRIBE": "Subscribe",
+      "OFFER": "Get 10% off your first order"
+    },
+    "SUPPORT": {
+      "TITLE": "Support",
+      "ADDRESS_LINE1": "111 Bijoy sarani, Dhaka,",
+      "ADDRESS_LINE2": "DH 1515, Bangladesh.",
+      "EMAIL": "exclusive@gmail.com",
+      "PHONE": "+88015-88888-9999"
+    },
+    "ACCOUNT": {
+      "TITLE": "Account",
+      "MY_ACCOUNT": "My Account",
+      "LOGIN_REGISTER": "Login / Register",
+      "CART": "Cart",
+      "WISHLIST": "Wishlist",
+      "SHOP": "Shop"
+    },
+    "QUICK_LINK": {
+      "TITLE": "Quick Link",
+      "PRIVACY": "Privacy Policy",
+      "TERMS": "Terms Of Use",
+      "FAQ": "FAQ",
+      "CONTACT": "Contact"
+    },
+    "DOWNLOAD": {
+      "TITLE": "Download App",
+      "OFFER": "Save $3 with App New User Only"
+    }
+  },
+  "COMMON": {
+    "SUMMER_SALE": "Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!",
+    "SHOP_NOW": "Shop Now"
+  },
+  "NAV": {
+    "HOME": "Home",
+    "CATEGORIES": "Categories",
+    "PRODUCTS": "Products",
+    "BRANDS": "Brands"
+  },
+  "SECTIONS": {
+    "PRODUCTS": {
+      "SMALL_TITLE": "Our Products",
+      "TITLE": "Explore Our Products",
+      "VIEW_ALL": "View All Products"
+    },
+    "CATEGORIES": {
+      "SMALL_TITLE": "Categories",
+      "TITLE": "Browse By Category"
+    },
+    "FEATURED": {
+      "SMALL_TITLE": "Featured",
+      "TITLE": "New Arrival"
+    },
+    "BRANDS": {
+      "TITLE": "Browse By Brands"
+    }
+  },
+  "FEATURES": {
+    "FREE_DELIVERY": {
+      "TITLE": "FREE AND FAST DELIVERY",
+      "DESCRIPTION": "Free delivery for all orders over $140"
+    },
+    "CUSTOMER_SERVICE": {
+      "TITLE": "24/7 CUSTOMER SERVICE",
+      "DESCRIPTION": "Friendly 24/7 customer support"
+    },
+    "MONEY_BACK": {
+      "TITLE": "MONEY BACK GUARANTEE",
+      "DESCRIPTION": "We return money within 30 days"
+    }
+  },
+  "ERRORS": {
+    "404": {
+      "BREADCRUMB_HOME": "Home",
+      "TITLE": "404 Not Found",
+      "DESCRIPTION": "The page you visited was not found. You may go to the home page.",
+      "BACK_BUTTON": "Back to home page"
+    }
+  },
+  "CHECKOUT": {
+    "BILLING_DETAILS": "Belling Details ",
+    "SHIPPING_ADDRESS": {
+      "DETAILS_LABEL": "Address Details",
+      "PHONE_LABEL": "Phone Number",
+      "CITY_LABEL": "City",
+      "DETAILS_ERRORS": {
+        "REQUIRED": "Address details are required",
+        "MIN_LENGTH": "Address must be at least 5 characters"
+      },
+      "PHONE_ERRORS": {
+        "REQUIRED": "Phone number is required",
+        "INVALID": "Please enter a valid Egyptian phone number (e.g., 01012345678)"
+      },
+      "CITY_ERRORS": {
+        "REQUIRED": "City is required"
+      }
+    },
+    "PAYMENT": {
+      "CASH": "Pay Cash",
+      "VISA": "Pay with Visa"
+    },
+    "LOADING": "Loading..."
+  },
+  "ORDERS": {
+    "ALL_ORDERS_TITLE": "All Orders",
+    "ORDER_NUMBER": "Order #{{id}}",
+    "CREATED_AT": "Created:",
+    "CUSTOMER": "👤 Customer",
+    "SHIPPING_ADDRESS": "📍 Shipping Address",
+    "PAYMENT_METHOD": "💳 Payment",
+    "STATUS": "💰 Status",
+    "PAID": "Paid",
+    "NOT_PAID": "Not Paid",
+    "TOTAL": "🛒 Total",
+    "CART_ITEMS": "🛍 Cart Items",
+    "NO_ORDERS": "No orders found.",
+    "QUANTITY": "Qty"
+  },
+  "CART_PAGE": {
+    "BREADCRUMB": "Home",
+    "BREADCRUMB_CART": "Cart",
+    "EMPTY_CART_TITLE": "Your Cart is Empty 🛒",
+    "EMPTY_CART_DESC": "Looks like you haven’t added any items yet.",
+    "START_SHOPPING": "Start Shopping",
+    "CART_HEADER": "Cart ({{count}})",
+    "TABLE": {
+      "PRODUCT": "Product",
+      "PRICE": "Price",
+      "QUANTITY": "Quantity",
+      "SUBTOTAL": "Subtotal"
+    },
+    "BUTTONS": {
+      "RETURN_SHOP": "Return To Shop",
+      "EMPTY_CART": "Empty Cart",
+      "CHECKOUT": "Proceed to checkout"
+    },
+    "TOTALS": {
+      "CART_TOTAL": "Cart Total",
+      "SUBTOTAL": "Subtotal:",
+      "SHIPPING": "Shipping:",
+      "FREE": "Free",
+      "TOTAL": "Total:"
+    }
+  },
+  "PRODUCTS_FILTER": {
+    "TITLE": "Filter Products",
+    "KEYWORD_LABEL": "Keyword",
+    "KEYWORD_PLACEHOLDER": "Search...",
+    "PRICE_RANGE_LABEL": "Price Range",
+    "SORT_BY_LABEL": "Sort By",
+    "SORT_OPTIONS": {
+      "LOW_TO_HIGH": "Price (Low to High)",
+      "HIGH_TO_LOW": "Price (High to Low)"
+    },
+    "BRAND_LABEL": "Brand",
+    "BRAND_PLACEHOLDER": "Select Brand",
+    "CATEGORY_LABEL": "Category",
+    "CATEGORY_PLACEHOLDER": "Select Category",
+    "APPLY_FILTERS": "Apply Filters",
+    "NO_PRODUCTS": "No Products Found"
+  },
+  "PRODUCT": {
+    "REVIEWS": "Reviews",
+    "IN_STOCK": "In Stock",
+    "SOLD_OUT": "Sold Out",
+    "SUBCATEGORIES": "Subcategories",
+    "ADD_TO_CART": "Add to Cart"
+  },
+  "DELIVERY": {
+    "FREE_DELIVERY": "Free Delivery",
+    "POSTAL_CODE_HINT": "Enter your postal code for Delivery Availability",
+    "RETURN_DELIVERY": "Return Delivery",
+    "RETURN_POLICY": "Free 30 Days Delivery Returns. Details"
+  },
+  "FORGOT_PASSWORD": {
+    "TITLE": "Forgot Password",
+    "SUBTITLE": "Reset your password in 3 simple steps",
+    "STEP_1": "Enter Email",
+    "STEP_2": "Verify Code",
+    "STEP_3": "New Password",
+    "SEND_CODE": "Send Verification Code",
+    "VERIFY_CODE": "Verify Code",
+    "RESET_PASSWORD": "Reset Password",
+    "VERIFICATION_CODE": "Verification Code"
+  },
+  "WISHLIST": {
+    "TITLE": "Wishlist",
+    "EMPTY_TITLE": "Your wishlist is empty",
+    "EMPTY_DESC": "Start exploring our products and save your favorites here.",
+    "BROWSE_PRODUCTS": "Browse Products"
+  },
+      "RELATED_ITEMS": "Related Items"
+
+}

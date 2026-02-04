@@ -6,11 +6,12 @@ import { UserService } from '../../../core/auth/services/user.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../core/auth/services/auth.service';
 import { CartService } from '../../../features/cart/services/cart.service';
-import { Subscription } from 'rxjs';
+import { LanguageSwitcherComponent } from "../language-switcher/language-switcher.component";
+import { TranslateModule } from '@ngx-translate/core';
 // import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, RouterLinkActive, CommonModule],
+  imports: [RouterLink, RouterLinkActive, CommonModule, LanguageSwitcherComponent, TranslateModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })

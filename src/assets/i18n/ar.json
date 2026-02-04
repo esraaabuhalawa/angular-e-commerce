@@ -1,0 +1,231 @@
+{
+  "AUTH": {
+    "SIGN_UP": "إنشاء حساب",
+    "LOGOUT": "تسجيل الخروج",
+    "REGISTER_TITLE": "إنشاء حساب جديد",
+    "REGISTER_SUBTITLE": "أدخل بياناتك بالأسفل",
+    "LOGIN_TITLE": "تسجيل الدخول إلى Exclusive",
+    "LOGIN_SUBTITLE": "أدخل بياناتك بالأسفل",
+    "EMAIL_LABEL": "البريد الإلكتروني",
+    "PASSWORD_LABEL": "كلمة المرور",
+    "HAVE_ACCOUNT": "لديك حساب بالفعل؟",
+    "LOGIN_ACTION": "تسجيل الدخول",
+    "LABELS": {
+      "NAME": "الاسم",
+      "CONFIRM_PASSWORD": "تأكيد كلمة المرور",
+      "PHONE": "رقم الهاتف (123-456-7890)"
+    },
+    "ERRORS": {
+      "REQUIRED": "هذا الحقل مطلوب",
+      "INVALID_EMAIL": "يرجى إدخال بريد إلكتروني صحيح",
+      "PASSWORD_RULES": "يجب ألا تقل كلمة المرور عن 6 أحرف وتحتوي على حرف كبير واحد على الأقل",
+      "PASSWORD_MISMATCH": "كلمتا المرور غير متطابقتين",
+      "INVALID_PHONE": "يرجى إدخال رقم هاتف صحيح",
+      "MAX_LENGTH": "يجب ألا يزيد عن 20 حرفًا",
+      "MIN_LENGTH": "يجب ألا يقل عن 3 أحرف"
+    },
+    "ACTIONS": {
+      "SUBMIT": "إرسال",
+      "LOADING": "جارٍ التحميل...",
+      "FORGOT_PASSWORD": "هل نسيت كلمة المرور؟"
+    }
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© جميع الحقوق محفوظة لشركة Rimel 2022",
+    "EXCLUSIVE": {
+      "TITLE": "إكسكلوسيف",
+      "SUBSCRIBE": "اشترك",
+      "OFFER": "احصل على خصم 10٪ على أول طلب لك"
+    },
+    "SUPPORT": {
+      "TITLE": "الدعم",
+      "ADDRESS_LINE1": "111 شارع بيجوي، دكا،",
+      "ADDRESS_LINE2": "DH 1515، بنغلاديش.",
+      "EMAIL": "exclusive@gmail.com",
+      "PHONE": "+88015-88888-9999"
+    },
+    "ACCOUNT": {
+      "TITLE": "الحساب",
+      "MY_ACCOUNT": "حسابي",
+      "LOGIN_REGISTER": "تسجيل الدخول / إنشاء حساب",
+      "CART": "سلة التسوق",
+      "WISHLIST": "المفضلة",
+      "SHOP": "المتجر"
+    },
+    "QUICK_LINK": {
+      "TITLE": "روابط سريعة",
+      "PRIVACY": "سياسة الخصوصية",
+      "TERMS": "شروط الاستخدام",
+      "FAQ": "الأسئلة الشائعة",
+      "CONTACT": "تواصل معنا"
+    },
+    "DOWNLOAD": {
+      "TITLE": "تحميل التطبيق",
+      "OFFER": "وفر 3$ للمستخدمين الجدد فقط"
+    }
+  },
+  "COMMON": {
+    "SUMMER_SALE": "تخفيضات الصيف على جميع ملابس السباحة مع توصيل سريع مجاني – خصم 50٪!",
+    "SHOP_NOW": "تسوق الآن"
+  },
+  "NAV": {
+    "HOME": "الرئيسية",
+    "CATEGORIES": "التصنيفات",
+    "PRODUCTS": "المنتجات",
+    "BRANDS": "العلامات التجارية"
+  },
+  "SECTIONS": {
+    "PRODUCTS": {
+      "SMALL_TITLE": "منتجاتنا",
+      "TITLE": "استكشف منتجاتنا",
+      "VIEW_ALL": "عرض جميع المنتجات"
+    },
+    "CATEGORIES": {
+      "SMALL_TITLE": "التصنيفات",
+      "TITLE": "تصفح حسب التصنيف"
+    },
+    "FEATURED": {
+      "SMALL_TITLE": "مميز",
+      "TITLE": "وصل حديثًا"
+    },
+        "BRANDS": {
+      "TITLE": "تصفح حسب العلامات التجارية"
+    }
+  },
+  "FEATURES": {
+    "FREE_DELIVERY": {
+      "TITLE": "توصيل سريع ومجاني",
+      "DESCRIPTION": "توصيل مجاني لجميع الطلبات التي تزيد عن 140$"
+    },
+    "CUSTOMER_SERVICE": {
+      "TITLE": "خدمة العملاء 24/7",
+      "DESCRIPTION": "دعم عملاء ودود على مدار الساعة"
+    },
+    "MONEY_BACK": {
+      "TITLE": "ضمان استرجاع المال",
+      "DESCRIPTION": "نرجع المال خلال 30 يومًا"
+    }
+  },
+  "ERRORS": {
+    "404": {
+      "BREADCRUMB_HOME": "الرئيسية",
+      "TITLE": "404 غير موجود",
+      "DESCRIPTION": "الصفحة التي زرتها غير موجودة. يمكنك العودة إلى الصفحة الرئيسية.",
+      "BACK_BUTTON": "العودة إلى الصفحة الرئيسية"
+    }
+  },
+  "CHECKOUT": {
+    "BILLING_DETAILS": "تفاصيل الدفع",
+    "SHIPPING_ADDRESS": {
+      "DETAILS_LABEL": "تفاصيل العنوان",
+      "PHONE_LABEL": "رقم الهاتف",
+      "CITY_LABEL": "المدينة",
+      "DETAILS_ERRORS": {
+        "REQUIRED": "تفاصيل العنوان مطلوبة",
+        "MIN_LENGTH": "يجب أن يكون العنوان 5 أحرف على الأقل"
+      },
+      "PHONE_ERRORS": {
+        "REQUIRED": "رقم الهاتف مطلوب",
+        "INVALID": "يرجى إدخال رقم هاتف مصري صحيح (مثال: 01012345678)"
+      },
+      "CITY_ERRORS": {
+        "REQUIRED": "المدينة مطلوبة"
+      }
+    },
+    "PAYMENT": {
+      "CASH": "الدفع نقدًا",
+      "VISA": "الدفع بفيزا"
+    },
+    "LOADING": "جارٍ التحميل..."
+  },
+  "ORDERS": {
+    "ALL_ORDERS_TITLE": "جميع الطلبات",
+    "ORDER_NUMBER": "الطلب رقم #{{id}}",
+    "CREATED_AT": "تاريخ الإنشاء:",
+    "CUSTOMER": "👤 العميل",
+    "SHIPPING_ADDRESS": "📍 عنوان الشحن",
+    "PAYMENT_METHOD": "💳 طريقة الدفع",
+    "STATUS": "💰 الحالة",
+    "PAID": "تم الدفع",
+    "NOT_PAID": "لم يتم الدفع",
+    "TOTAL": "🛒 الإجمالي",
+    "CART_ITEMS": "🛍 عناصر السلة",
+    "NO_ORDERS": "لا توجد طلبات.",
+    "QUANTITY": "الكمية"
+  },
+   "CART_PAGE": {
+    "BREADCRUMB": "الرئيسية",
+    "BREADCRUMB_CART": "السلة",
+    "EMPTY_CART_TITLE": "سلتك فارغة 🛒",
+    "EMPTY_CART_DESC": "يبدو أنك لم تضف أي عناصر بعد.",
+    "START_SHOPPING": "ابدأ التسوق",
+    "CART_HEADER": "السلة ({{count}})",
+    "TABLE": {
+      "PRODUCT": "المنتج",
+      "PRICE": "السعر",
+      "QUANTITY": "الكمية",
+      "SUBTOTAL": "المجموع الفرعي"
+    },
+    "BUTTONS": {
+      "RETURN_SHOP": "العودة للتسوق",
+      "EMPTY_CART": "تفريغ السلة",
+      "CHECKOUT": "المتابعة لإتمام الشراء"
+    },
+    "TOTALS": {
+      "CART_TOTAL": "إجمالي السلة",
+      "SUBTOTAL": "المجموع الفرعي:",
+      "SHIPPING": "الشحن:",
+      "FREE": "مجاني",
+      "TOTAL": "الإجمالي:"
+    }
+  },
+  "PRODUCTS_FILTER": {
+    "TITLE": "تصفية المنتجات",
+    "KEYWORD_LABEL": "الكلمة المفتاحية",
+    "KEYWORD_PLACEHOLDER": "بحث...",
+    "PRICE_RANGE_LABEL": "نطاق السعر",
+    "SORT_BY_LABEL": "ترتيب حسب",
+    "SORT_OPTIONS": {
+      "LOW_TO_HIGH": "السعر (من الأقل إلى الأعلى)",
+      "HIGH_TO_LOW": "السعر (من الأعلى إلى الأقل)"
+    },
+    "BRAND_LABEL": "العلامة التجارية",
+    "BRAND_PLACEHOLDER": "اختر علامة تجارية",
+    "CATEGORY_LABEL": "الفئة",
+    "CATEGORY_PLACEHOLDER": "اختر فئة",
+    "APPLY_FILTERS": "تطبيق الفلاتر",
+    "NO_PRODUCTS": "لا توجد منتجات"
+  },
+    "PRODUCT": {
+    "REVIEWS": "تقييمات",
+    "IN_STOCK": "متوفر",
+    "SOLD_OUT": "غير متوفر",
+       "SUBCATEGORIES": "التصنيفات الفرعية",
+    "ADD_TO_CART": "أضف إلى السلة"
+  },
+    "DELIVERY": {
+    "FREE_DELIVERY": "توصيل مجاني",
+    "POSTAL_CODE_HINT": "أدخل الرمز البريدي لمعرفة توفر التوصيل",
+    "RETURN_DELIVERY": "إرجاع الطلب",
+    "RETURN_POLICY": "إرجاع مجاني خلال 30 يومًا. التفاصيل"
+  },
+    "FORGOT_PASSWORD": {
+    "TITLE": "نسيت كلمة المرور",
+    "SUBTITLE": "إعادة تعيين كلمة المرور في 3 خطوات بسيطة",
+    "STEP_1": "إدخال البريد الإلكتروني",
+    "STEP_2": "تأكيد الرمز",
+    "STEP_3": "كلمة مرور جديدة",
+       "SEND_CODE": "إرسال رمز التحقق",
+    "VERIFY_CODE": "تأكيد الرمز",
+    "RESET_PASSWORD": "إعادة تعيين كلمة المرور",
+    "VERIFICATION_CODE": "رمز التحقق"
+  },
+   "WISHLIST": {
+    "TITLE": "قائمة المفضلة",
+    "EMPTY_TITLE": "قائمة المفضلة فارغة",
+    "EMPTY_DESC": "ابدأ بتصفح منتجاتنا واحفظ منتجاتك المفضلة هنا.",
+    "BROWSE_PRODUCTS": "تصفح المنتجات"
+  },
+      "RELATED_ITEMS": "منتجات ذات صلة"
+
+}

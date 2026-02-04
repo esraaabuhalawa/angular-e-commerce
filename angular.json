@@ -32,6 +32,7 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"
@@ -48,6 +49,9 @@
             }
           },
           "configurations": {
+            "ar": {
+              "localize": ["ar"]
+            },
             "production": {
               "budgets": [
                 {
@@ -85,6 +89,9 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "configurations": {
+            "ar": {
+              "buildTarget": "your-app:build:development,ar"
+            },
             "production": {
               "buildTarget": "E-commerce-project:build:production"
             },
@@ -119,6 +126,7 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+                 "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"

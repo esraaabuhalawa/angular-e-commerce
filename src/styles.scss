@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 @use 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel' as owl;
 @use 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default' as owldefault;
 // regular style toast
@@ -9,13 +8,29 @@
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
 
-
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
 :root {
   --color-primary: #5A6D57;
   --color-secondary: #DB4444;
   --primary-font: "Poppins", sans-serif;
+   /* English */
+  --font-en: "Poppins", sans-serif;
+
+  /* Arabic */
+  --font-ar: "Tajawal", "Cairo", sans-serif;
 }
 
+html[lang="en"] {
+  --font-base: var(--font-en);
+}
+
+html[lang="ar"] {
+  --font-base: var(--font-ar);
+}
+
+body {
+  font-family: var(--font-base);
+}
 .line-clamp-1 {
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -88,29 +103,28 @@
   color: var(--primary-color) !important
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  top: 100% !important;
-  background-color: gray;
-  border-radius: 50%;
-  color: #000 !important
-}
+// .swiper-button-next,
+// .swiper-button-prev {
+//   top: 100% !important;
+//   background-color: gray;
+//   border-radius: 50%;
+//   color: #000 !important
+// }
 
-.swiper-button-prev,
-.swiper-rtl .swiper-button-next {
-  left: 40% !important
-}
+// .swiper-button-prev,
+// .swiper-rtl .swiper-button-next {
+//   left: 40% !important
+// }
 
-.swiper-button-next,
-.swiper-rtl .swiper-button-prev {
-  right: 40% !important
-}
+// .swiper-button-next,
+// .swiper-rtl .swiper-button-prev {
+//   right: 40% !important
+// }
 
 
 swiper-container::part(bullet-active) {
   background-color: var(--color-secondary) !important;
 }
-
 
 .section-header {
   p {
@@ -144,7 +158,24 @@ swiper-container::part(bullet-active) {
     font-family: "Inter", sans-serif;
     color: #000;
     line-height: 48px;
-    letter-spacing: 4%;
+    letter-spacing: 0.04em; // 4% converted to em
+  }
+
+  // Arabic (RTL) styling
+  &[dir="rtl"],
+  [dir="rtl"] & {
+    p,h2{
+      font-family: var(--font-ar);
+    }
+    p {
+      padding-left: 0;
+      padding-right: 30px;
+
+      &::before {
+        left: auto;
+        right: 0;
+      }
+    }
   }
 }
 
@@ -152,7 +183,6 @@ swiper-container::part(bullet-active) {
 @media screen and (max-width:500px) {
   .section-header {
     margin-left: 10px;
-
     p {
       font-size: 1rem;
       padding-left: 21px;

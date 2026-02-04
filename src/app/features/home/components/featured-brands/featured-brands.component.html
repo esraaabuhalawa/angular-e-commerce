@@ -1,7 +1,7 @@
 <section class="">
-  <header class=" mb-7  section-header ">
-    <p>Featured</p>
-    <h2>New Arrival</h2>
+  <header class=" mb-7 mt-4 section-header ">
+    <p>{{ 'SECTIONS.FEATURED.SMALL_TITLE' | translate }}</p>
+    <h2>{{ 'SECTIONS.FEATURED.TITLE' | translate }}</h2>
   </header>
 
   @if(allCategories.length > 0){
@@ -15,7 +15,7 @@
             {{allCategories[0].name}}
           </h2>
           <a [routerLink]="['/products']" [queryParams]="{ category: allCategories[0]._id }"
-            class="text-white font-regular text-base capitalize">Shop Now</a>
+            class="text-white font-regular text-base capitalize">{{('COMMON.SHOP_NOW') | translate}}</a>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
             {{allCategories[2].name}}
           </h2>
           <a [routerLink]="['/products']" [queryParams]="{ category: allCategories[2]._id }"
-            class="text-white font-regular text-base capitalize">Shop Now</a>
+            class="text-white font-regular text-base capitalize">{{('COMMON.SHOP_NOW') | translate}}</a>
         </div>
       </div>
       <!-- Bottom two images side by side -->
@@ -42,7 +42,7 @@
               {{allCategories[8].name}}
             </h2>
             <a [routerLink]="['/products']" [queryParams]="{ category: allCategories[8]._id }"
-              class="text-white font-regular text-base capitalize">Shop Now</a>
+              class="text-white font-regular text-base capitalize">{{('COMMON.SHOP_NOW') | translate}}</a>
           </div>
         </div>
 
@@ -53,7 +53,7 @@
               {{allCategories[1].name}}
             </h2>
             <a [routerLink]="['/products']" [queryParams]="{ category: allCategories[1]._id }"
-              class="text-white font-regular text-base capitalize">Shop Now</a>
+              class="text-white font-regular text-base capitalize">{{('COMMON.SHOP_NOW') | translate}}</a>
           </div>
         </div>
 

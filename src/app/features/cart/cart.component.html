@@ -1,6 +1,7 @@
 <div class="px-6 sm:px-12 py-10">
   <!-- Breadcrumb -->
-  <p class="text-sm text-gray-500 mb-6">Home / <span class="font-semibold">Cart</span></p>
+  <p class="text-sm text-gray-500 mb-6"> {{ 'CART_PAGE.BREADCRUMB' | translate }} / <span class="font-semibold">{{
+      'CART_PAGE.BREADCRUMB_CART' | translate }}</span></p>
 
   @if(loading){
   <app-loader />
@@ -10,10 +11,10 @@
   <div class="text-center py-16">
     <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.webp" alt="Empty Cart"
       class="w-32 h-32 mx-auto mb-6 opacity-70" />
-    <h2 class="text-2xl font-semibold mb-2">Your Cart is Empty 🛒</h2>
-    <p class="text-gray-500 mb-10">Looks like you haven’t added any items yet.</p>
+    <h2 class="text-2xl font-semibold mb-2">{{ 'CART_PAGE.EMPTY_CART_TITLE' | translate }}</h2>
+    <p class="text-gray-500 mb-10">{{ 'CART_PAGE.EMPTY_CART_DESC' | translate }}</p>
     <a routerLink="/products" class="bg-red-500 text-white px-6 py-3 rounded shadow hover:bg-red-600 transition">
-      Start Shopping
+      {{ 'CART_PAGE.START_SHOPPING' | translate }}
     </a>
   </div>
   } @else {
@@ -21,16 +22,17 @@
     <!-- Cart Table -->
     <div class="md:col-span-8">
       <header class="mb-7 section-header">
-        <h1 class="text-gray-800 font-bold text-xl">Cart ({{cartItems.length}})</h1>
+        <h1 class="text-gray-800 font-bold text-xl">{{ 'CART_PAGE.BREADCRUMB_CART' | translate }} ({{cartItems.length}})
+        </h1>
       </header>
       <div class="overflow-x-auto">
         <table class="w-full text-left border-separate border-spacing-y-4 ">
           <thead>
             <tr class="text-gray-600">
-              <th class="p-2">Product</th>
-              <th class="p-2">Price</th>
-              <th class="p-2">Quantity</th>
-              <th class="p-2">Subtotal</th>
+              <th class="p-2">{{ 'CART_PAGE.TABLE.PRODUCT' | translate }}</th>
+              <th class="p-2">{{ 'CART_PAGE.TABLE.PRICE' | translate }}</th>
+              <th class="p-2">{{ 'CART_PAGE.TABLE.QUANTITY' | translate }}</th>
+              <th class="p-2">{{ 'CART_PAGE.TABLE.SUBTOTAL' | translate }}</th>
             </tr>
           </thead>
           <tbody>
@@ -87,38 +89,39 @@
       <!-- Cart Actions -->
       <div class="flex justify-between mt-6">
         <button routerLink="/products"
-          class="bg-red-500 text-white px-3  rounded shadow hover:bg-red-600 transition border py-2 hover:cursor-pointer">Return
-          To Shop</button>
+          class="bg-red-500 text-white px-3  rounded shadow hover:bg-red-600 transition border py-2 hover:cursor-pointer">
+          {{ 'CART_PAGE.BUTTONS.RETURN_SHOP' | translate }}
+        </button>
         <button (click)="emptyCart()"
-          class="border px-6 py-2 rounded hover:border-red-600 hover:bg-red-600 transition hover:cursor-pointer hover:text-white ">Empty
-          Cart</button>
+          class="border px-6 py-2 rounded hover:border-red-600 hover:bg-red-600 transition hover:cursor-pointer hover:text-white ">
+          {{ 'CART_PAGE.BUTTONS.EMPTY_CART' | translate }}
+        </button>
       </div>
     </div>
 
     <!-- Cart Total -->
     <div class="lg:col-span-4">
       <div class="border border-gray-400 p-6 rounded-lg shadow-sm">
-        <h3 class="font-bold text-lg mb-4">Cart Total</h3>
+        <h3 class="font-bold text-lg mb-4">{{ 'CART_PAGE.TOTALS.CART_TOTAL' | translate }}</h3>
         <div class="flex justify-between mb-2">
-          <span>Subtotal:</span>
+          <span>{{ 'CART_PAGE.TOTALS.SUBTOTAL' | translate }}</span>
           <span>{{ total | currency:'EGP' }}</span>
         </div>
         <div class="flex justify-between mb-2">
-          <span>Shipping:</span>
-          <span>Free</span>
+          <span>{{ 'CART_PAGE.TOTALS.SHIPPING' | translate }}</span>
+          <span>{{ 'CART_PAGE.TOTALS.FREE' | translate }}</span>
         </div>
         <div class="flex justify-between font-bold text-lg mb-4">
-          <span>Total:</span>
+          <span>{{ 'CART_PAGE.TOTALS.TOTAL' | translate }}</span>
           <span>{{ total | currency:'EGP' }}</span>
         </div>
         <button [routerLink]="['/checkout/' , cartId ]"
           class="bg-red-500 text-white w-full py-3 rounded hover:bg-red-600 transition border py-2 hover:cursor-pointer">
-          Proceed to checkout
+          {{ 'CART_PAGE.BUTTONS.CHECKOUT' | translate }}
         </button>
       </div>
     </div>
   </div>
   }
   }
-
 </div>

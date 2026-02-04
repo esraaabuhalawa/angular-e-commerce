@@ -5,9 +5,10 @@ import { Subscription } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { LoaderComponent } from "../../shared/components/loader/loader.component";
 import { NgxPaginationModule } from 'ngx-pagination';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-brands',
-  imports: [RouterLink, LoaderComponent ,NgxPaginationModule],
+  imports: [RouterLink, LoaderComponent ,NgxPaginationModule, TranslateModule],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.scss'
 })
