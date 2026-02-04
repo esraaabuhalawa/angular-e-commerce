@@ -16,12 +16,12 @@ export class DefaultLayoutComponent {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly authService = inject(AuthService); // optional
 
-  // ngOnInit(): void {
-  //   if (isPlatformBrowser(this.platformId)) {
-  //     // Only load if user is authenticated
-  //    // if (this.authService.isAuthenticated()) {
-  //       this.wishlistService.loadWishlist();
-  //     //}
-  //   }
-  // }
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      // Only load if user is authenticated
+     // if (this.authService.isAuthenticated()) {
+        this.wishlistService.loadWishlist();
+      //}
+    }
+  }
 }
