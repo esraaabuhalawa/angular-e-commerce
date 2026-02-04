@@ -14,9 +14,9 @@
       <h2 class="text-lg font-semibold mb-4"> {{ 'PRODUCTS_FILTER.TITLE' | translate }}</h2>
 
       <!-- Keyword -->
-      <div class="mb-4">
+      <div class="mb-4"> <!--[value]="searchKeyword"-->
         <label class="block text-sm font-medium mb-1">{{ 'PRODUCTS_FILTER.KEYWORD_LABEL' | translate }}</label>
-        <input type="text" name="keyword" placeholder="{{ 'PRODUCTS_FILTER.KEYWORD_PLACEHOLDER' | translate }}"
+        <input type="text"  name="keyword"   placeholder="{{ 'PRODUCTS_FILTER.KEYWORD_PLACEHOLDER' | translate }}"
           (input)="searchProducts($event)" class="w-full border border-gray-300 rounded-md p-2 text-sm">
       </div>
 

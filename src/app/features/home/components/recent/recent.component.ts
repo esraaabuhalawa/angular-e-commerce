@@ -80,7 +80,7 @@ export class RecentComponent implements OnInit, OnDestroy {
       rtl: isRTL,
       pullDrag: true,
       dots: false,
-      margin: 20,
+      margin: 30,
       navSpeed: 700,
       navText: [
         '<i class="fa-solid fa-arrow-left"></i>',

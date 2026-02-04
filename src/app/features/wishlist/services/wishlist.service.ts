@@ -15,10 +15,11 @@ export class WishlistService {
 
   private loadingSubject = new BehaviorSubject<boolean>(false);
   isLoading$ = this.loadingSubject.asObservable();
-  // constructor() {
-  //   // Optionally load wishlist once service is created
-  //   this.loadWishlist();
-  // }
+
+  private wishlistCountSubject = new BehaviorSubject<number>(0);
+  wishlistCount$ = this.wishlistCountSubject.asObservable();
+
+
 
   //Load wishlist from backend
   loadWishlist(): void {
@@ -27,10 +28,12 @@ export class WishlistService {
       next: (res) => {
         this.loadingSubject.next(false);
         this.wishlistSubject.next(res.data || []);
+        this.wishlistCountSubject.next(res.count || 0);
       },
       error: () => {
           this.loadingSubject.next(false);
         this.wishlistSubject.next([]);
+        this.wishlistCountSubject.next(0);
       }
     });
   }
@@ -54,5 +57,10 @@ export class WishlistService {
   isInWishlist(id: string): boolean {
     const current = this.wishlistSubject.value;
     return current.some((item: any) => item.id === id || item.productId === id);
+  }
+
+  // Get current count synchronously
+  getWishlistCount(): number {
+    return this.wishlistCountSubject.value;
   }
 }

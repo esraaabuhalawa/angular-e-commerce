@@ -135,6 +135,7 @@ swiper-container::part(bullet-active) {
     font-weight: 600;
     font-family: var(--primary-font);
     padding-left: 30px;
+    padding-right: 30px;
     line-height: 20px;
     color: var(--color-secondary);
     position: relative;
@@ -168,9 +169,6 @@ swiper-container::part(bullet-active) {
       font-family: var(--font-ar);
     }
     p {
-      padding-left: 0;
-      padding-right: 30px;
-
       &::before {
         left: auto;
         right: 0;
@@ -182,10 +180,11 @@ swiper-container::part(bullet-active) {
 
 @media screen and (max-width:500px) {
   .section-header {
+    padding: 0 10px;
     margin-left: 10px;
     p {
       font-size: 1rem;
-      padding-left: 21px;
+      // padding: 4px 21px;
 
       &::before {
         width: 14px;
