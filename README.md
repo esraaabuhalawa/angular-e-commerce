@@ -27,8 +27,7 @@ A modern, full-featured e-commerce web application built with **Angular 20** and
 
 ### UI Components & Libraries
 
-- **Swiper** - Touch slider carousel
-- **Owl Carousel** - Additional carousel functionality
+- **Owl Carousel** - carousel functionality
 - **Font Awesome** - Icon library
 - **ngx-pagination** - Pagination component
 - **ngx-toastr** - Toast notifications
@@ -225,7 +224,7 @@ Key dependencies include:
 - `rxjs` - Reactive programming library
 - `@ngx-translate/core` - Translation library
 - `ngx-toastr` - Notification library
-- `swiper` - Carousel library
+- `owl-carousel` - Carousel library
 - `express` - Node.js server for SSR
 
 See `package.json` for complete list and versions.
