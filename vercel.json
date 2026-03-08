@@ -3,13 +3,10 @@
   "outputDirectory": "dist/E-commerce-project/browser",
   "installCommand": "npm install --legacy-peer-deps",
   "framework": null,
-  "routes": [
+  "rewrites": [
     {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
