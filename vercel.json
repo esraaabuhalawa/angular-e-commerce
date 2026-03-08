@@ -1,21 +1,12 @@
 {
   "buildCommand": "npm run build -- --configuration=production",
-  "installCommand": "npm install --legacy-peer-deps",
   "outputDirectory": "dist/E-commerce-project/browser",
+  "installCommand": "npm install --legacy-peer-deps",
   "framework": null,
-  "functions": {
-    "dist/E-commerce-project/server/server.mjs": {
-      "runtime": "nodejs20.x"
-    }
-  },
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*\\..+)",
-      "dest": "/dist/E-commerce-project/browser/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/dist/E-commerce-project/server/server.mjs"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
