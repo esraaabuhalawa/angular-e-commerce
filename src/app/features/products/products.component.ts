@@ -121,7 +121,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
     }
 
     if (this.sortProducts) {
-      filters['sort'] = this.searchProducts;
+      filters['sort'] = this.sortProducts;
+      // filters['sort'] = this.searchProducts;
     }
 
      if (this.searchKeyword) {
@@ -132,13 +133,18 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   searchProducts(event: Event) {
-    const keyword = (event.target as HTMLInputElement).value;
-    const filters: any = {};
-    if (keyword) {
-      filters['keyword'] = keyword;
-    }
-    this.fetchProducts(filters)
-  }
+  this.searchKeyword = (event.target as HTMLInputElement).value;
+  this.applyFilters();
+}
+
+  // searchProducts(event: Event) {
+  //   const keyword = (event.target as HTMLInputElement).value;
+  //   const filters: any = {};
+  //   if (keyword) {
+  //     filters['keyword'] = keyword;
+  //   }
+  //   this.fetchProducts(filters)
+  // }
 
 
   //   searchProducts(event: Event) {
@@ -178,7 +184,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       }
 
     // Apply filters if either category or brand exists
-    if (this.selectedCategory || this.selectedBrand) {
+    if (this.selectedCategory || this.selectedBrand || this.searchKeyword) {
       this.applyFilters();
     } else {
       // Default fetch if no query params
