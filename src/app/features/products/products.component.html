@@ -1,12 +1,4 @@
 <div class="min-h-screen bg-white">
-  <!-- Search -->
-  <!-- <div class="max-w-7xl mx-auto p-4">
-    <div class="flex items-center border-b border-gray-300">
-      <input type="text" placeholder="Pants" class="flex-1 py-2 px-2 outline-none text-gray-700 placeholder-gray-400" />
-      <button class="text-gray-500">✕</button>
-    </div>
-  </div> -->
-
   <!-- Main layout -->
   <div class="px-10 mx-auto p-4 grid grid-cols-12  gap-6">
     <aside class="col-span-12 md:col-span-3 space-y-6 bg-white shadow-md py-8 px-4 rounded-lg"
@@ -16,14 +8,9 @@
       <!-- Keyword -->
       <div class="mb-4"> <!--[value]="searchKeyword"-->
         <label class="block text-sm font-medium mb-1">{{ 'PRODUCTS_FILTER.KEYWORD_LABEL' | translate }}</label>
-        <input
-  type="text"
-  name="keyword"
-  [value]="searchKeyword"
-  placeholder="{{ 'PRODUCTS_FILTER.KEYWORD_PLACEHOLDER' | translate }}"
-  (input)="searchProducts($event)"
-  class="w-full border border-gray-300 rounded-md p-2 text-sm"
-/>
+        <input type="text" name="keyword" [value]="searchKeyword"
+          placeholder="{{ 'PRODUCTS_FILTER.KEYWORD_PLACEHOLDER' | translate }}" (input)="searchProducts($event)"
+          class="w-full border border-gray-300 rounded-md p-2 text-sm" />
         <!-- <input type="text"  name="keyword"   placeholder="{{ 'PRODUCTS_FILTER.KEYWORD_PLACEHOLDER' | translate }}"
           (input)="searchProducts($event)" class="w-full border border-gray-300 rounded-md p-2 text-sm"> -->
       </div>
