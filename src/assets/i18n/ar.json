@@ -88,7 +88,7 @@
       "SMALL_TITLE": "مميز",
       "TITLE": "وصل حديثًا"
     },
-        "BRANDS": {
+    "BRANDS": {
       "TITLE": "تصفح حسب العلامات التجارية"
     }
   },
@@ -153,7 +153,7 @@
     "NO_ORDERS": "لا توجد طلبات.",
     "QUANTITY": "الكمية"
   },
-   "CART_PAGE": {
+  "CART_PAGE": {
     "BREADCRUMB": "الرئيسية",
     "BREADCRUMB_CART": "السلة",
     "EMPTY_CART_TITLE": "سلتك فارغة 🛒",
@@ -196,36 +196,36 @@
     "APPLY_FILTERS": "تطبيق الفلاتر",
     "NO_PRODUCTS": "لا توجد منتجات"
   },
-    "PRODUCT": {
+  "PRODUCT": {
     "REVIEWS": "تقييمات",
     "IN_STOCK": "متوفر",
     "SOLD_OUT": "غير متوفر",
-       "SUBCATEGORIES": "التصنيفات الفرعية",
+    "SUBCATEGORIES": "التصنيفات الفرعية",
     "ADD_TO_CART": "أضف إلى السلة"
   },
-    "DELIVERY": {
+  "DELIVERY": {
     "FREE_DELIVERY": "توصيل مجاني",
     "POSTAL_CODE_HINT": "أدخل الرمز البريدي لمعرفة توفر التوصيل",
     "RETURN_DELIVERY": "إرجاع الطلب",
     "RETURN_POLICY": "إرجاع مجاني خلال 30 يومًا. التفاصيل"
   },
-    "FORGOT_PASSWORD": {
+  "FORGOT_PASSWORD": {
     "TITLE": "نسيت كلمة المرور",
     "SUBTITLE": "إعادة تعيين كلمة المرور في 3 خطوات بسيطة",
     "STEP_1": "إدخال البريد الإلكتروني",
     "STEP_2": "تأكيد الرمز",
     "STEP_3": "كلمة مرور جديدة",
-       "SEND_CODE": "إرسال رمز التحقق",
+    "SEND_CODE": "إرسال رمز التحقق",
     "VERIFY_CODE": "تأكيد الرمز",
     "RESET_PASSWORD": "إعادة تعيين كلمة المرور",
     "VERIFICATION_CODE": "رمز التحقق"
   },
-   "WISHLIST": {
+  "WISHLIST": {
     "TITLE": "قائمة المفضلة",
     "EMPTY_TITLE": "قائمة المفضلة فارغة",
     "EMPTY_DESC": "ابدأ بتصفح منتجاتنا واحفظ منتجاتك المفضلة هنا.",
     "BROWSE_PRODUCTS": "تصفح المنتجات"
   },
-      "RELATED_ITEMS": "منتجات ذات صلة"
-
+  "RELATED_ITEMS": "منتجات ذات صلة",
+  "NO_ACCOUNT": "ليس لديك حساب؟"
 }

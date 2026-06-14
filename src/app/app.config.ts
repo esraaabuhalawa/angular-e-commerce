@@ -15,6 +15,7 @@ import {CookieService} from 'ngx-cookie-service';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TransferState } from '@angular/core';
 import { translateLoaderFactory } from './i18n/translation-loader';
+import { errorInterceptor } from './core/interceptors/error-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,11 +26,11 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ scrollPositionRestoration: 'top' })
     ),
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch(), withInterceptors([headingInterceptor])),
+    provideHttpClient(withFetch(), withInterceptors([headingInterceptor,errorInterceptor])),
     provideAnimations(),
     importProvidersFrom(CookieService,
       TranslateModule.forRoot({
-        fallbackLang: 'en', // ✅ Use fallbackLang instead of defaultLanguage
+        fallbackLang: 'en', // Use fallbackLang instead of defaultLanguage
         loader: {
           provide: TranslateLoader,
           useFactory: translateLoaderFactory,

@@ -39,7 +39,7 @@ export class RecentComponent implements OnInit, OnDestroy {
 
     this.getProducts = this.productService.getAllProducts().subscribe({
       next: (res: any) => {
-        console.log('API Response:', res);
+        //console.log('API Response:', res);
 
         // Check if res.data exists and is an array
         if (res && res.data && Array.isArray(res.data)) {

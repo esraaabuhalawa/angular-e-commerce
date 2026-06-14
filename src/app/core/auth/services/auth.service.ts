@@ -29,7 +29,6 @@ export class AuthService {
   logOut() {
     this.userService.clearUser();
     if (isPlatformBrowser(this.platformId)) {
-
       this.cookieService.delete('authToken');
       this.router.navigate(['/auth/login']);
     }
