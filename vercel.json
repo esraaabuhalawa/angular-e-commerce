@@ -1,5 +1,4 @@
 {
-  "alias": ["my-ecommerce-app.vercel.app"],
   "buildCommand": "npm run build -- --configuration=production",
   "outputDirectory": "dist/E-commerce-project/browser",
   "installCommand": "npm install --legacy-peer-deps",
