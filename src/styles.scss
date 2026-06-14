@@ -5,17 +5,17 @@
 @use 'ngx-toastr/toastr';
 @use "tailwindcss";
 @use "flowbite/src/themes/default";
+
+@use './assets/styles/fonts';
+
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
 
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
 :root {
   --color-primary: #5A6D57;
   --color-secondary: #DB4444;
-  --primary-font: "Poppins", sans-serif;
    /* English */
   --font-en: "Poppins", sans-serif;
-
   /* Arabic */
   --font-ar: "Tajawal", "Cairo", sans-serif;
 }
@@ -83,10 +83,6 @@ body {
   .border-secondary {
     border-color: var(--color-secondary);
   }
-
-  .primary-font {
-    font-family: var(--primary-font);
-  }
 }
 
 /* global.css */
@@ -103,25 +99,6 @@ body {
   color: var(--primary-color) !important
 }
 
-// .swiper-button-next,
-// .swiper-button-prev {
-//   top: 100% !important;
-//   background-color: gray;
-//   border-radius: 50%;
-//   color: #000 !important
-// }
-
-// .swiper-button-prev,
-// .swiper-rtl .swiper-button-next {
-//   left: 40% !important
-// }
-
-// .swiper-button-next,
-// .swiper-rtl .swiper-button-prev {
-//   right: 40% !important
-// }
-
-
 swiper-container::part(bullet-active) {
   background-color: var(--color-secondary) !important;
 }
@@ -133,7 +110,6 @@ swiper-container::part(bullet-active) {
     margin-bottom: 20px;
     font-size: 16px;
     font-weight: 600;
-    font-family: var(--primary-font);
     padding-left: 30px;
     padding-right: 30px;
     line-height: 20px;
@@ -159,7 +135,7 @@ swiper-container::part(bullet-active) {
     font-family: "Inter", sans-serif;
     color: #000;
     line-height: 48px;
-    letter-spacing: 0.04em; // 4% converted to em
+    letter-spacing: 0.04em;
   }
 
   // Arabic (RTL) styling

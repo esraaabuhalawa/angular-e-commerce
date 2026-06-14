@@ -27,7 +27,7 @@
     <!--End Of Image Gallery-->
     <div class="space-y-6">
       <div>
-        <h1 class="text-2xl primary-font font-[600] text-black">{{ product.title }}</h1>
+        <h1 class="text-2xl font-[600] text-black">{{ product.title }}</h1>
         <div class="flex items-center mt-3">
           <app-star-rating [rating]="product.ratingsAverage" [maxRating]="5" [readonlyCase]="true"></app-star-rating>
           <span class="text-[var(--text-muted)] ml-2 me-3">( {{ product.ratingsQuantity}} {{ 'PRODUCT.REVIEWS' |
@@ -60,15 +60,6 @@
 
       <!-- Quantity & Actions -->
       <div class="flex items-center gap-3 mb-10">
-        <!-- Quantity Counter -->
-        <!-- <div class="flex items-center border rounded-sm grow-1">
-          <button (click)="decreaseQty()"
-            class="transition duration-300 px-3 py-1 text-lg font-bold border-r w-1/3 hover:bg-red-500 hover:text-white hover:cursor-pointer">−</button>
-          <span class="text-center w-1/3">{{ quantity }}</span>
-          <button (click)="increaseQty()"
-            class="transition duration-300 px-3 py-1 text-lg font-bold border-l w-1/3 hover:bg-red-500 hover:text-white hover:cursor-pointer">+</button>
-        </div> -->
-
         <!-- Buy Now -->
         <button [disabled]="loading" (click)="addToCart()"
           class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-md font-medium grow-4 transition duration-300 "
