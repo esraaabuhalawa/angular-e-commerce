@@ -19,9 +19,9 @@
       <div class="mb-4">
         <label class="block text-sm font-medium mb-1"> {{ 'PRODUCTS_FILTER.PRICE_RANGE_LABEL' | translate }}</label>
         <div class="flex space-x-2">
-          <input type="number" name="price[gte]" placeholder="Less than" [(ngModel)]="minPrice"
-            class="w-1/2 border border-gray-300 rounded-md p-2 text-sm">
           <input type="number" name="price[lte]" placeholder="Greater than" [(ngModel)]="maxPrice"
+            class="w-1/2 border border-gray-300 rounded-md p-2 text-sm">
+          <input type="number" name="price[gte]" placeholder="Less than" [(ngModel)]="minPrice"
             class="w-1/2 border border-gray-300 rounded-md p-2 text-sm">
         </div>
       </div>

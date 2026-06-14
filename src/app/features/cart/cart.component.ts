@@ -86,7 +86,7 @@ export class CartComponent implements OnInit, OnDestroy {
         this.cartLength = res.numOfCartItems;
         this.total = res.data.totalCartPrice;
         this.cartId = res.data._id
-        console.log(this.cartId);
+       // console.log(this.cartId);
         this.cartItems = res.data.products;
       },
       error: (err) => {

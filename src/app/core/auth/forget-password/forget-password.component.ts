@@ -46,7 +46,7 @@ export class ForgetPasswordComponent {
   sendCode(): void {
     if (this.emailForm.valid) {
       this.isLoading = true
-      console.log('Send code to:', this.emailForm.value);
+      //console.log('Send code to:', this.emailForm.value);
       this.authService.forgetPassword(this.emailForm.value).subscribe({
         next: (res) => {
           this.isLoading = false

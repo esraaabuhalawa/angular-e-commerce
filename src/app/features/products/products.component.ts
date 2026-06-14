@@ -59,11 +59,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
           this.total = res.results
         },
         error: (error) => {
-          this.isLoading = false; // stop loading if error
+          this.isLoading = false;
           console.log(error)
         },
         complete: () => {
-          this.isLoading = false; // stop loading after completion
+          this.isLoading = false; 
         },
       }
     )
@@ -79,7 +79,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.categorySub = this.categoryService.getAllCategories().subscribe({
       next: (res) => {
         this.allCategories = res.data;
-        //console.log(this.allCategories)
       },
       error: (err) => {
         console.log(err)
@@ -91,7 +90,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.brandSub = this.brandsService.getAllBrands().subscribe({
       next: (res) => {
         this.allBrands = res.data;
-        //  console.log(this.allBrands)
       },
       error: (err) => {
         console.log(err)
@@ -136,31 +134,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
   this.searchKeyword = (event.target as HTMLInputElement).value;
   this.applyFilters();
 }
-
-  // searchProducts(event: Event) {
-  //   const keyword = (event.target as HTMLInputElement).value;
-  //   const filters: any = {};
-  //   if (keyword) {
-  //     filters['keyword'] = keyword;
-  //   }
-  //   this.fetchProducts(filters)
-  // }
-
-
-  //   searchProducts(event: Event) {
-  //   const keyword = (event.target as HTMLInputElement).value;
-
-  //   // ✅ Update query params to include keyword
-  //   this.router.navigate(['/products'], {
-  //     queryParams: {
-  //       ...this.route.snapshot.queryParams, // Keep existing params
-  //       keyword: keyword || null // Remove keyword if empty
-  //     },
-  //     queryParamsHandling: 'merge' // Merge with existing params
-  //   });
-
-
-  // }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
