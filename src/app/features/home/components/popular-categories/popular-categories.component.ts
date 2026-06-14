@@ -12,7 +12,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   imports: [CarouselModule, RouterLink, TranslateModule],
   templateUrl: './popular-categories.component.html',
   styleUrl: './popular-categories.component.scss',
-  //  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PopularCategoriesComponent implements OnInit, OnDestroy {
   categoriesList: Category[] = [];
@@ -72,7 +71,6 @@ export class PopularCategoriesComponent implements OnInit, OnDestroy {
       {
         next: (res) => {
           this.categoriesList = res.data;
-          // console.log(res.data)
         },
         error: (err) => {
           console.log(err)
@@ -84,6 +82,7 @@ export class PopularCategoriesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getCategories();
   }
+  
   ngOnDestroy(): void {
     if (this.categoriesSubscribe) {
       this.categoriesSubscribe.unsubscribe();
